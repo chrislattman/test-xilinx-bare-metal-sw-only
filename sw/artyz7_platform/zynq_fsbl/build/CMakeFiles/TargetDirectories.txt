@@ -1,3 +1,0 @@
-E:/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/zynq_fsbl/build/CMakeFiles/fsbl.elf.dir
-E:/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/zynq_fsbl/build/CMakeFiles/edit_cache.dir
-E:/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/zynq_fsbl/build/CMakeFiles/rebuild_cache.dir

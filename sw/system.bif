@@ -1,0 +1,7 @@
+//arch = zynq; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader]E:\test-xilinx-bare-metal-sw-only\sw\artyz7_platform\export\artyz7_platform\sw\boot\fsbl.elf
+	E:\test-xilinx-bare-metal-sw-only\sw\hello_world\_ide\bitstream\artyz7_wrapper.bit
+	E:\test-xilinx-bare-metal-sw-only\sw\hello_world\build\hello_world.elf
+}

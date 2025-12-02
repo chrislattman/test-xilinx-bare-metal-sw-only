@@ -30,7 +30,7 @@
 				"resetAPU": false,
 				"bitstreamFile": "${workspaceFolder}\\hello_world\\_ide\\bitstream\\artyz7_wrapper.bit",
 				"zynqInitialization": {
-					"isFsbl": false,
+					"isFsbl": true,
 					"usingFSBL": {
 						"initWithFSBL": true,
 						"fsblFile": "${workspaceFolder}\\artyz7_platform\\export\\artyz7_platform\\sw\\boot\\fsbl.elf",
