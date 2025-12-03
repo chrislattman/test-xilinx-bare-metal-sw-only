@@ -1,0 +1,5 @@
+generate_pem:
+{
+	[pskfile] primarykey.pem
+	[sskfile] secondarykey.pem
+}

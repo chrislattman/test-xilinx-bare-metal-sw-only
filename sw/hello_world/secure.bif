@@ -1,0 +1,10 @@
+//arch = zynq; split = false; format = BIN; zynq_key_store = bbram
+the_ROM_image:
+{
+	[pskfile]E:\test-xilinx-bare-metal-sw-only\sw\hello_world\primarykey.pem
+	[sskfile]E:\test-xilinx-bare-metal-sw-only\sw\hello_world\secondarykey.pem
+	[fsbl_config]bh_auth_enable
+	[bootloader]E:\test-xilinx-bare-metal-sw-only\sw\artyz7_platform\export\artyz7_platform\sw\boot\fsbl.elf
+	E:\test-xilinx-bare-metal-sw-only\sw\hello_world\_ide\bitstream\artyz7_wrapper.bit
+	E:\test-xilinx-bare-metal-sw-only\sw\hello_world\build\hello_world.elf
+}

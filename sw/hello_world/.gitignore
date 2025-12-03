@@ -20,3 +20,4 @@
 _ide/logs
 _ide/.wsdata
 src/.cache
+*.pem
