@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Product Version: Vivado v2025.1 (64-bit)                              -->
+<!-- Product Version: Vivado v2025.2 (64-bit)                              -->
 <!--                                                                         -->
 <!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.                   -->
 <!-- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.   -->
 
-<Project Product="Vivado" Version="7" Minor="70" Path="E:/test-xilinx-sw-only/fpga/fpga.xpr">
+<Project Product="Vivado" Version="7" Minor="71" Path="/home/chris/test-xilinx-bare-metal-sw-only/fpga/fpga.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="bbccc91378b5406eb795bde5690576e8"/>
+    <Option Name="Id" Val="54a84cb4e610410eaa5054245318f398"/>
     <Option Name="Part" Val="xc7z020clg400-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -29,11 +29,11 @@
     <Option Name="SimulatorGccInstallDirVCS" Val=""/>
     <Option Name="SimulatorGccInstallDirRiviera" Val=""/>
     <Option Name="SimulatorGccInstallDirActiveHdl" Val=""/>
-    <Option Name="SimulatorVersionXsim" Val="2025.1"/>
-    <Option Name="SimulatorVersionModelSim" Val="2024.3"/>
-    <Option Name="SimulatorVersionQuesta" Val="2024.3_3"/>
-    <Option Name="SimulatorVersionXcelium" Val="24.09.001"/>
-    <Option Name="SimulatorVersionVCS" Val="W-2024.09-SP1"/>
+    <Option Name="SimulatorVersionXsim" Val="2025.2"/>
+    <Option Name="SimulatorVersionModelSim" Val="2025.2"/>
+    <Option Name="SimulatorVersionQuesta" Val="2025.2"/>
+    <Option Name="SimulatorVersionXcelium" Val="25.03.002"/>
+    <Option Name="SimulatorVersionVCS" Val="X-2025.06"/>
     <Option Name="SimulatorVersionRiviera" Val="2024.10"/>
     <Option Name="SimulatorVersionActiveHdl" Val="15.0"/>
     <Option Name="SimulatorGccVersionXsim" Val="9.3.0"/>
@@ -44,7 +44,7 @@
     <Option Name="SimulatorGccVersionRiviera" Val="9.3.0"/>
     <Option Name="SimulatorGccVersionActiveHdl" Val="9.3.0"/>
     <Option Name="BoardPart" Val="digilentinc.com:arty-z7-20:part0:1.1"/>
-    <Option Name="BoardPartRepoPaths" Val="C:/Users/chris/AppData/Roaming/Xilinx/Vivado/2025.1/xhub/board_store/xilinx_board_store"/>
+    <Option Name="BoardPartRepoPaths" Val="$PPRDIR/../../.Xilinx/Vivado/2025.2/xhub/board_store/xilinx_board_store"/>
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
@@ -71,9 +71,9 @@
     <Option Name="WTModelSimExportSim" Val="1"/>
     <Option Name="WTQuestaExportSim" Val="1"/>
     <Option Name="WTIesExportSim" Val="0"/>
-    <Option Name="WTVcsExportSim" Val="0"/>
+    <Option Name="WTVcsExportSim" Val="1"/>
     <Option Name="WTRivieraExportSim" Val="1"/>
-    <Option Name="WTActivehdlExportSim" Val="1"/>
+    <Option Name="WTActivehdlExportSim" Val="0"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -100,8 +100,8 @@
         <CompFileExtendedInfo CompFileName="artyz7.bd" FileRelPathName="ip/artyz7_axi_gpio_0_0/artyz7_axi_gpio_0_0.xci">
           <Proxy FileSetName="artyz7_axi_gpio_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="artyz7.bd" FileRelPathName="ip/artyz7_axi_gpio_1_0/artyz7_axi_gpio_1_0.xci">
-          <Proxy FileSetName="artyz7_axi_gpio_1_0"/>
+        <CompFileExtendedInfo CompFileName="artyz7.bd" FileRelPathName="ip/artyz7_axi_gpio_1_2/artyz7_axi_gpio_1_2.xci">
+          <Proxy FileSetName="artyz7_axi_gpio_1_2"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="artyz7.bd" FileRelPathName="ip/artyz7_axi_smc_0/artyz7_axi_smc_0.xci">
           <Proxy FileSetName="artyz7_axi_smc_0"/>
@@ -155,6 +155,14 @@
         <Option Name="CosimPdi" Val=""/>
         <Option Name="CosimPlatform" Val=""/>
         <Option Name="CosimElf" Val=""/>
+        <Option Name="CosimRootfs" Val=""/>
+        <Option Name="CosimSDfile" Val=""/>
+        <Option Name="CosimSDDir" Val=""/>
+        <Option Name="CosimOutDir" Val=""/>
+        <Option Name="CosimXsa" Val=""/>
+        <Option Name="CosimAIKernel" Val=""/>
+        <Option Name="LogicalNoCTop" Val=""/>
+        <Option Name="LogicalNoCTopLib" Val=""/>
         <Option Name="Dmv" Val=""/>
       </Config>
     </FileSet>
@@ -188,9 +196,9 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="artyz7_axi_gpio_1_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/artyz7_axi_gpio_1_0" RelGenDir="$PGENDIR/artyz7_axi_gpio_1_0">
+    <FileSet Name="artyz7_axi_gpio_1_2" Type="BlockSrcs" RelSrcDir="$PSRCDIR/artyz7_axi_gpio_1_2" RelGenDir="$PGENDIR/artyz7_axi_gpio_1_2">
       <Config>
-        <Option Name="TopModule" Val="artyz7_axi_gpio_1_0"/>
+        <Option Name="TopModule" Val="artyz7_axi_gpio_1_2"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -206,11 +214,14 @@
     <Simulator Name="Questa">
       <Option Name="Description" Val="Questa Advanced Simulator"/>
     </Simulator>
+    <Simulator Name="Xcelium">
+      <Option Name="Description" Val="Xcelium Parallel Simulator"/>
+    </Simulator>
+    <Simulator Name="VCS">
+      <Option Name="Description" Val="Verilog Compiler Simulator (VCS)"/>
+    </Simulator>
     <Simulator Name="Riviera">
       <Option Name="Description" Val="Riviera-PRO Simulator"/>
-    </Simulator>
-    <Simulator Name="ActiveHDL">
-      <Option Name="Description" Val="Active-HDL Simulator"/>
     </Simulator>
   </Simulators>
   <Runs Version="1" Minor="22">
@@ -274,7 +285,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="artyz7_axi_gpio_1_0_synth_1" Type="Ft3:Synth" SrcSet="artyz7_axi_gpio_1_0" Part="xc7z020clg400-1" ConstrsSet="artyz7_axi_gpio_1_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/artyz7_axi_gpio_1_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/artyz7_axi_gpio_1_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/artyz7_axi_gpio_1_0_synth_1" ParallelReportGen="true">
+    <Run Id="artyz7_axi_gpio_1_2_synth_1" Type="Ft3:Synth" SrcSet="artyz7_axi_gpio_1_2" Part="xc7z020clg400-1" ConstrsSet="artyz7_axi_gpio_1_2" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/artyz7_axi_gpio_1_2_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/artyz7_axi_gpio_1_2_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/artyz7_axi_gpio_1_2_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -382,7 +393,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="artyz7_axi_gpio_1_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="artyz7_axi_gpio_1_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="artyz7_axi_gpio_1_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/artyz7_axi_gpio_1_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/artyz7_axi_gpio_1_0_impl_1" ParallelReportGen="true">
+    <Run Id="artyz7_axi_gpio_1_2_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="artyz7_axi_gpio_1_2" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="artyz7_axi_gpio_1_2_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/artyz7_axi_gpio_1_2_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/artyz7_axi_gpio_1_2_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025">
           <Desc>Default settings for Implementation.</Desc>

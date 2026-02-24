@@ -7,7 +7,7 @@
       "name": "artyz7",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2025.1",
+      "tool_version": "2025.2",
       "validated": "true"
     },
     "design_tree": {
@@ -69,6 +69,12 @@
           },
           "TIMEPERIOD_PS": {
             "value": "1250",
+            "value_src": "default"
+          }
+        },
+        "hdl_attributes": {
+          "LOCKED": {
+            "value": "FALSE",
             "value_src": "default"
           }
         },
@@ -157,6 +163,12 @@
             "value_src": "default"
           }
         },
+        "hdl_attributes": {
+          "LOCKED": {
+            "value": "FALSE",
+            "value_src": "default"
+          }
+        },
         "port_maps": {
           "MIO": {
             "physical_name": "FIXED_IO_mio",
@@ -190,6 +202,12 @@
         "mode": "Master",
         "vlnv_bus_definition": "xilinx.com:interface:gpio:1.0",
         "vlnv": "xilinx.com:interface:gpio_rtl:1.0",
+        "hdl_attributes": {
+          "LOCKED": {
+            "value": "FALSE",
+            "value_src": "default"
+          }
+        },
         "port_maps": {
           "TRI_O": {
             "physical_name": "leds_4bits_tri_o",
@@ -203,6 +221,12 @@
         "mode": "Master",
         "vlnv_bus_definition": "xilinx.com:interface:gpio:1.0",
         "vlnv": "xilinx.com:interface:gpio_rtl:1.0",
+        "hdl_attributes": {
+          "LOCKED": {
+            "value": "FALSE",
+            "value_src": "default"
+          }
+        },
         "port_maps": {
           "TRI_O": {
             "physical_name": "rgb_led_tri_o",
@@ -212,23 +236,16 @@
           }
         }
       },
-      "sws_2bits": {
-        "mode": "Master",
-        "vlnv_bus_definition": "xilinx.com:interface:gpio:1.0",
-        "vlnv": "xilinx.com:interface:gpio_rtl:1.0",
-        "port_maps": {
-          "TRI_I": {
-            "physical_name": "sws_2bits_tri_i",
-            "direction": "I",
-            "left": "1",
-            "right": "0"
-          }
-        }
-      },
       "btns_4bits": {
         "mode": "Master",
         "vlnv_bus_definition": "xilinx.com:interface:gpio:1.0",
         "vlnv": "xilinx.com:interface:gpio_rtl:1.0",
+        "hdl_attributes": {
+          "LOCKED": {
+            "value": "FALSE",
+            "value_src": "default"
+          }
+        },
         "port_maps": {
           "TRI_I": {
             "physical_name": "btns_4bits_tri_i",
@@ -237,14 +254,33 @@
             "right": "0"
           }
         }
+      },
+      "sws_2bits": {
+        "mode": "Master",
+        "vlnv_bus_definition": "xilinx.com:interface:gpio:1.0",
+        "vlnv": "xilinx.com:interface:gpio_rtl:1.0",
+        "hdl_attributes": {
+          "LOCKED": {
+            "value": "FALSE",
+            "value_src": "default"
+          }
+        },
+        "port_maps": {
+          "TRI_I": {
+            "physical_name": "sws_2bits_tri_i",
+            "direction": "I",
+            "left": "1",
+            "right": "0"
+          }
+        }
       }
     },
     "components": {
       "processing_system7_0": {
         "vlnv": "xilinx.com:ip:processing_system7:5.5",
-        "ip_revision": "7",
+        "ip_revision": "8",
         "xci_name": "artyz7_processing_system7_0_0",
-        "xci_path": "ip\\artyz7_processing_system7_0_0\\artyz7_processing_system7_0_0.xci",
+        "xci_path": "ip/artyz7_processing_system7_0_0/artyz7_processing_system7_0_0.xci",
         "inst_hier_path": "processing_system7_0",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -1968,7 +2004,7 @@
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
         "ip_revision": "37",
         "xci_name": "artyz7_axi_gpio_0_0",
-        "xci_path": "ip\\artyz7_axi_gpio_0_0\\artyz7_axi_gpio_0_0.xci",
+        "xci_path": "ip/artyz7_axi_gpio_0_0/artyz7_axi_gpio_0_0.xci",
         "inst_hier_path": "axi_gpio_0",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -1985,9 +2021,9 @@
       },
       "axi_smc": {
         "vlnv": "xilinx.com:ip:smartconnect:1.0",
-        "ip_revision": "27",
+        "ip_revision": "28",
         "xci_name": "artyz7_axi_smc_0",
-        "xci_path": "ip\\artyz7_axi_smc_0\\artyz7_axi_smc_0.xci",
+        "xci_path": "ip/artyz7_axi_smc_0/artyz7_axi_smc_0.xci",
         "inst_hier_path": "axi_smc",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -2094,23 +2130,23 @@
         "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
         "ip_revision": "17",
         "xci_name": "artyz7_rst_ps7_0_100M_0",
-        "xci_path": "ip\\artyz7_rst_ps7_0_100M_0\\artyz7_rst_ps7_0_100M_0.xci",
+        "xci_path": "ip/artyz7_rst_ps7_0_100M_0/artyz7_rst_ps7_0_100M_0.xci",
         "inst_hier_path": "rst_ps7_0_100M",
         "has_run_ip_tcl": "true"
       },
       "axi_gpio_1": {
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
         "ip_revision": "37",
-        "xci_name": "artyz7_axi_gpio_1_0",
-        "xci_path": "ip\\artyz7_axi_gpio_1_0\\artyz7_axi_gpio_1_0.xci",
+        "xci_name": "artyz7_axi_gpio_1_2",
+        "xci_path": "ip/artyz7_axi_gpio_1_2/artyz7_axi_gpio_1_2.xci",
         "inst_hier_path": "axi_gpio_1",
         "has_run_ip_tcl": "true",
         "parameters": {
           "GPIO2_BOARD_INTERFACE": {
-            "value": "btns_4bits"
+            "value": "sws_2bits"
           },
           "GPIO_BOARD_INTERFACE": {
-            "value": "sws_2bits"
+            "value": "btns_4bits"
           },
           "USE_BOARD_FLOW": {
             "value": "true"
@@ -2133,13 +2169,13 @@
       },
       "axi_gpio_1_GPIO": {
         "interface_ports": [
-          "sws_2bits",
+          "btns_4bits",
           "axi_gpio_1/GPIO"
         ]
       },
       "axi_gpio_1_GPIO2": {
         "interface_ports": [
-          "btns_4bits",
+          "sws_2bits",
           "axi_gpio_1/GPIO2"
         ]
       },

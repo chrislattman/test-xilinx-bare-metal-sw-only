@@ -8,14 +8,14 @@
 
 #Ignore logs folder and log files
 /logs
-.log
+*.log
 
 #Ignore lock files
 *.lock
 
 *.bin
 *.pdi
-*.vitisWorkspace.json
+.vitisWorkspace.json
 
 _ide/logs
 _ide/.wsdata

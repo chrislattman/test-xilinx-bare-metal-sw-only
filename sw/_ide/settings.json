@@ -1,4 +1,0 @@
-{
-    "vitis.build.application –PlatformBuildDependency": "never",
-    "vitis.build.showXsdbConsole": true
-}

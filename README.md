@@ -8,4 +8,3 @@ The software application was developed in Vitis Unified IDE 2025.1, and it's bui
 - The XSA file is generated in Vivado (by generating the block design and then running synthesis and then implementation/place & route)
 - The XSA file doesn't include a FPGA bitstream since there is no programmable logic (PL) in this example
 - However, the XSA file is still needed as it defines the hardware platform which the software runs on, including enabling the AXI GPIO used to toggle the LED in this example
-
