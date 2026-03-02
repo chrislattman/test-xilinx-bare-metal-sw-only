@@ -10,7 +10,14 @@ Vitis Unified IDE projects are organized around platform components and applicat
 A domain is a target OS/processor pair and is part of the platform component. The target OS determines what kind of application components can run on it.
 An application component can be a standalone application, a FreeRTOS application, or a PetaLinux application.
 
-To build the project non-interactively, run `vitis -s build.py` from the `sw` folder. To generate the BOOT.bin file for QSPI flash or QEMU, run `bootgen -image system.bif -arch zynq -o BOOT.bin -w` from the `hello_world` folder.
+Note: before running any `vitis`, `bootgen`, `hw_server`, or `xsdb` commands *outside* of the Vitis Unified IDE, make sure to source the Vitis environment variables.
+
+To build the project non-interactively, run `vitis -s build.py [--release]` from the `sw` folder. To generate the BOOT.bin file for QSPI flash or QEMU, run `bootgen -image system.bif -arch zynq -o BOOT.bin -w` from the `hello_world` folder.
+
+To deploy the project without the Vitis IDE:
+
+- Run `hw_server -s tcp:127.0.0.1:3121` in one shell
+- Run `vitis -s run.py` in another shell
 
 For secure boot (testing only):
 
