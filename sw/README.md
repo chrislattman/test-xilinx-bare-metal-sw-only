@@ -10,27 +10,34 @@ Vitis Unified IDE projects are organized around platform components and applicat
 A domain is a target OS/processor pair and is part of the platform component. The target OS determines what kind of application components can run on it.
 An application component can be a standalone application, a FreeRTOS application, or a PetaLinux application.
 
-Note: before running any `vitis`, `bootgen`, `hw_server`, or `xsdb` commands *outside* of the Vitis Unified IDE, make sure to source the Vitis environment variables.
+Note: before running any `vitis`, `bootgen`, `program_flash`, `hw_server`, or `xsdb` commands *outside* of the Vitis Unified IDE, make sure to source the Vitis environment variables.
 
-To build the project non-interactively, run `vitis -s build.py [--release]` from the `sw` folder. To generate the BOOT.bin file for QSPI flash or QEMU, run `bootgen -image system.bif -arch zynq -o BOOT.bin -w` from the `hello_world` folder.
+To deploy the project using JTAG without the Vitis IDE:
 
-To deploy the project without the Vitis IDE:
-
+- Run `vitis -s build.py --release`
 - Run `hw_server -s tcp:127.0.0.1:3121` in one shell
 - Run `vitis -s run.py` in another shell
 
-For secure boot (testing only):
+To debug the project from the command line (using TCL script for demonstration, but Python works):
 
-- Generate the primary and secondary secret keys (PSK and SSK) by running `bootgen -generate_keys pem -arch zynq -image generate_pem.bif` from the `hello_world` folder
-    - These are technically RSA public/private key pairs
-- Generate the secure boot-enabled BOOT.bin by running `bootgen -image secure.bif -arch zynq -o BOOT.bin -w -encrypt bbram`
-    - This makes bootgen generate an AES key (stored in BBRAM)
-    - bh_auth_enable in `secure.bif` ensures that eFUSEs aren't written to
+- Run `vitis -s build.py`
+- Run `hw_server -s tcp:127.0.0.1:3121` in one shell
+- Run `xsdb` in another shell, then in the xsdb shell, run `source debug.tcl`
+    - Commands are available [here](https://docs.amd.com/r/en-US/ug1725-xsdb-reference-guide/XSDB-Commands)
 
-When debugging, there is a built-in serial monitor available in Vitis Unified IDE 2025.1 and later. Go to Vitis -> Serial Monitor, your device's serial port, then select the 115200 baud rate.
-To debug the application from the command line, use XSDB. It internally uses the same debugging protocol as GDB but XSDB also understands FPGA logic (which GDB does not, of course).
+When debugging, there is a built-in serial monitor available in Vitis Unified IDE 2025.1 and later. Go to Vitis -> Serial Monitor, select your device's serial port, then select the 115200 baud rate.
+
+If you want to program QSPI flash so that the device starts executing code from a boot image:
+
+- Run `bootgen -image system.bif -arch zynq -o BOOT.bin -w` from the `hello_world` folder
+- Run `hw_server -s tcp:127.0.0.1:3121` in one shell
+- In another shell, run `program_flash -f hello_world/BOOT.bin -fsbl artyz7_platform/export/artyz7_platform/sw/boot/fsbl.elf -flash_type qspi-x4-single -blank_check -verify -target_name "jsn-Arty Z7-003017BB13CFA-4ba00477-0"` from the `sw` folder
+- Unplug power from the board, switch from JTAG to QSPI boot mode on the board, then plug power back in
 
 Notes:
 
 - Don't pin Vitis to the Windows taskbar. It must be run from the Desktop or Start Menu shortcuts since those shortcuts load the settings64.bat file
 - If you want to initialize the board with ps7_init.tcl instead of the FSBL, change `isFsbl` to `false` in `hello_world/_ide/launch.json`
+- If you want one A9 to communicate to another (in Linux this would be interprocess communication), the best approach is to use shared (DDR) memory and interprocessor interrupts, also known as software generated interrupts
+    - In Linux you would use Unix domain sockets
+- `hw_server` is needed so that `xsdb` and other utilities can connect to one central JTAG daemon

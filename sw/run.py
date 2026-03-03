@@ -4,6 +4,7 @@ import xsdb
 session = xsdb.start_debug_session()
 session.connect()
 session.bpremove()
+session.targets(id=1)
 session.rst()
 time.sleep(3)
 
@@ -25,5 +26,3 @@ session.rst(type="processor")
 session.dow("./hello_world/build/hello_world.elf")
 session.con()
 session.configparams("force-mem-access", 0)
-
-xsdb.dispose()

@@ -19,7 +19,9 @@
 
 #include <sleep.h>
 #include <xgpio.h>
+#include <xil_exception.h>
 #include <xil_printf.h>
+#include <xinterrupt_wrap.h>
 #include <xparameters.h>
 
 #include "platform.h"
@@ -29,26 +31,53 @@
  * channel GPIO is mapped to leds_4bits and the second channel GPIO2 is mapped
  * to rgb_led.
  */
-#define LED_CHANNEL 1 
+#define LED_CHANNEL 1
+
+/*
+ * axi_gpio_1 from the block design has 2 channels. First is mapped to btns_4bits
+ * and second is mapped to sws_2bits.
+ */
+#define BTNS_CHANNEL 1
+
+XGpio gpio0, gpio1;
+
+void button_isr()
+{
+    XGpio_InterruptClear(&gpio1, BTNS_CHANNEL);
+    XGpio_DiscreteWrite(&gpio0, LED_CHANNEL, 0x2);
+}
 
 int main()
 {
-    XGpio gpio;
     int status;
+    XGpio_Config *config_ptr;
 
-    status = XGpio_Initialize(&gpio, XPAR_AXI_GPIO_0_BASEADDR);
+    // Initialize AXI GPIO for each IP
+    status = XGpio_Initialize(&gpio0, XPAR_AXI_GPIO_0_BASEADDR);
     if (status != XST_SUCCESS) {
         return XST_FAILURE;
     }
+    XGpio_SetDataDirection(&gpio0, LED_CHANNEL, 0x0);
 
-    XGpio_SetDataDirection(&gpio, LED_CHANNEL, 0x0);
+    // Using the SDT approach adopted by Vitis Unified IDE
+    config_ptr = XGpio_LookupConfig(XPAR_AXI_GPIO_1_BASEADDR);
+    status = XGpio_Initialize(&gpio1, XPAR_AXI_GPIO_1_BASEADDR);
+    if (status != XST_SUCCESS) {
+        return XST_FAILURE;
+    }
+    status = XSetupInterruptSystem(&gpio1, &button_isr, config_ptr->IntrId, config_ptr->IntrParent, XINTERRUPT_DEFAULT_PRIORITY);
+    if (status != XST_SUCCESS) {
+        return XST_FAILURE;
+    }
+    XGpio_InterruptEnable(&gpio1, BTNS_CHANNEL);
+    XGpio_InterruptGlobalEnable(&gpio1);
 
     init_platform();
     while (1) {
-        XGpio_DiscreteWrite(&gpio, LED_CHANNEL, 0x1); // 0x1 is the bitmask for LED0; 0x2, 0x4, 0x8 for other LEDs
+        XGpio_DiscreteWrite(&gpio0, LED_CHANNEL, 0x1); // 0x1 is the bitmask for LED0; 0x2, 0x4, 0x8 for other LEDs
         sleep(1);
         print("Hello\r\n");
-        XGpio_DiscreteWrite(&gpio, LED_CHANNEL, 0x0); // 0x0 mean turn off all LEDs
+        XGpio_DiscreteWrite(&gpio0, LED_CHANNEL, 0x0); // 0x0 means turn off all LEDs
         sleep(1);
         print("World!\r\n");
     }
