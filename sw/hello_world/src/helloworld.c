@@ -144,6 +144,8 @@ int main()
 
     init_platform();
     while (1) {
+        // TODO: add watchdog timer
+        // https://github.com/Xilinx/embeddedsw/blob/master/XilinxProcessorIPLib/drivers/scuwdt/examples/xscuwdt_polled_example.c
         XGpio_DiscreteWrite(&gpio_instance0, LED_CHANNEL, 0x1); // 0x1 is the bitmask for LED0; 0x2, 0x4, 0x8 for other LEDs
         sleep(1);
         printf("Hello\r\n");
