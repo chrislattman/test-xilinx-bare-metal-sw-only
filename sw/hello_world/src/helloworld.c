@@ -229,7 +229,7 @@ static int read_write_sd()
     const char *filename = "test.txt";
     const char contents[] = "Hello this is the content of test.txt!";
     char read_contents[sizeof(contents)];
-    
+
     // Mount the file system and allocate the space for it
     res = f_mount(&fatfs, path, 0);
     if (res != FR_OK) {
