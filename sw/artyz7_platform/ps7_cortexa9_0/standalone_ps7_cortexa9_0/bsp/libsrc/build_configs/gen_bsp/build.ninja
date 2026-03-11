@@ -3343,6 +3343,201 @@ build libsrc/xiltimer/src/core/default_timer/CMakeFiles/install/strip.util: CUST
 build libsrc/xiltimer/src/core/default_timer/install/strip: phony libsrc/xiltimer/src/core/default_timer/CMakeFiles/install/strip.util
 
 # =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target xilffs
+
+
+#############################################
+# Order-only phony target for xilffs
+
+build cmake_object_order_depends_target_xilffs: phony || libsrc/xilffs/src/CMakeFiles/xilffs.dir
+
+build libsrc/xilffs/src/CMakeFiles/xilffs.dir/diskio.c.obj: C_COMPILER__xilffs_ /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xilffs/src/diskio.c || cmake_object_order_depends_target_xilffs
+  DEP_FILE = libsrc/xilffs/src/CMakeFiles/xilffs.dir/diskio.c.obj.d
+  FLAGS = -DSDT -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -MMD -MP -specs=/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/Xilinx.spec -I/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/include   -c  -O2 -g -Wall -Wextra -fno-tree-loop-distribute-patterns -iquote /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/include
+  INCLUDES = -I/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/include -isystem /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/include -isystem /home/chris/opt/Xilinx/2025.2/gnu/aarch32/lin/gcc-arm-none-eabi/x86_64-oesdk-linux/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/13.3.0/include -isystem /home/chris/opt/Xilinx/2025.2/gnu/aarch32/lin/gcc-arm-none-eabi/x86_64-oesdk-linux/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/13.3.0/include-fixed -isystem /home/chris/opt/Xilinx/2025.2/Vitis/gnu/aarch32/lin/gcc-arm-none-eabi/aarch32-xilinx-eabi/usr/include
+  OBJECT_DIR = libsrc/xilffs/src/CMakeFiles/xilffs.dir
+  OBJECT_FILE_DIR = libsrc/xilffs/src/CMakeFiles/xilffs.dir
+
+build libsrc/xilffs/src/CMakeFiles/xilffs.dir/ff.c.obj: C_COMPILER__xilffs_ /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xilffs/src/ff.c || cmake_object_order_depends_target_xilffs
+  DEP_FILE = libsrc/xilffs/src/CMakeFiles/xilffs.dir/ff.c.obj.d
+  FLAGS = -DSDT -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -MMD -MP -specs=/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/Xilinx.spec -I/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/include   -c  -O2 -g -Wall -Wextra -fno-tree-loop-distribute-patterns -iquote /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/include
+  INCLUDES = -I/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/include -isystem /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/include -isystem /home/chris/opt/Xilinx/2025.2/gnu/aarch32/lin/gcc-arm-none-eabi/x86_64-oesdk-linux/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/13.3.0/include -isystem /home/chris/opt/Xilinx/2025.2/gnu/aarch32/lin/gcc-arm-none-eabi/x86_64-oesdk-linux/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/13.3.0/include-fixed -isystem /home/chris/opt/Xilinx/2025.2/Vitis/gnu/aarch32/lin/gcc-arm-none-eabi/aarch32-xilinx-eabi/usr/include
+  OBJECT_DIR = libsrc/xilffs/src/CMakeFiles/xilffs.dir
+  OBJECT_FILE_DIR = libsrc/xilffs/src/CMakeFiles/xilffs.dir
+
+build libsrc/xilffs/src/CMakeFiles/xilffs.dir/ffsystem.c.obj: C_COMPILER__xilffs_ /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xilffs/src/ffsystem.c || cmake_object_order_depends_target_xilffs
+  DEP_FILE = libsrc/xilffs/src/CMakeFiles/xilffs.dir/ffsystem.c.obj.d
+  FLAGS = -DSDT -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -MMD -MP -specs=/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/Xilinx.spec -I/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/include   -c  -O2 -g -Wall -Wextra -fno-tree-loop-distribute-patterns -iquote /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/include
+  INCLUDES = -I/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/include -isystem /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/include -isystem /home/chris/opt/Xilinx/2025.2/gnu/aarch32/lin/gcc-arm-none-eabi/x86_64-oesdk-linux/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/13.3.0/include -isystem /home/chris/opt/Xilinx/2025.2/gnu/aarch32/lin/gcc-arm-none-eabi/x86_64-oesdk-linux/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/13.3.0/include-fixed -isystem /home/chris/opt/Xilinx/2025.2/Vitis/gnu/aarch32/lin/gcc-arm-none-eabi/aarch32-xilinx-eabi/usr/include
+  OBJECT_DIR = libsrc/xilffs/src/CMakeFiles/xilffs.dir
+  OBJECT_FILE_DIR = libsrc/xilffs/src/CMakeFiles/xilffs.dir
+
+build libsrc/xilffs/src/CMakeFiles/xilffs.dir/ffunicode.c.obj: C_COMPILER__xilffs_ /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xilffs/src/ffunicode.c || cmake_object_order_depends_target_xilffs
+  DEP_FILE = libsrc/xilffs/src/CMakeFiles/xilffs.dir/ffunicode.c.obj.d
+  FLAGS = -DSDT -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -MMD -MP -specs=/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/Xilinx.spec -I/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/include   -c  -O2 -g -Wall -Wextra -fno-tree-loop-distribute-patterns -iquote /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/include
+  INCLUDES = -I/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/include -isystem /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/include -isystem /home/chris/opt/Xilinx/2025.2/gnu/aarch32/lin/gcc-arm-none-eabi/x86_64-oesdk-linux/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/13.3.0/include -isystem /home/chris/opt/Xilinx/2025.2/gnu/aarch32/lin/gcc-arm-none-eabi/x86_64-oesdk-linux/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/13.3.0/include-fixed -isystem /home/chris/opt/Xilinx/2025.2/Vitis/gnu/aarch32/lin/gcc-arm-none-eabi/aarch32-xilinx-eabi/usr/include
+  OBJECT_DIR = libsrc/xilffs/src/CMakeFiles/xilffs.dir
+  OBJECT_FILE_DIR = libsrc/xilffs/src/CMakeFiles/xilffs.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target xilffs
+
+
+#############################################
+# Link the static library libsrc/xilffs/src/libxilffs.a
+
+build libsrc/xilffs/src/libxilffs.a: C_STATIC_LIBRARY_LINKER__xilffs_ libsrc/xilffs/src/CMakeFiles/xilffs.dir/diskio.c.obj libsrc/xilffs/src/CMakeFiles/xilffs.dir/ff.c.obj libsrc/xilffs/src/CMakeFiles/xilffs.dir/ffsystem.c.obj libsrc/xilffs/src/CMakeFiles/xilffs.dir/ffunicode.c.obj
+  LANGUAGE_COMPILE_FLAGS = -DSDT -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -MMD -MP -specs=/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/Xilinx.spec -I/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/include
+  OBJECT_DIR = libsrc/xilffs/src/CMakeFiles/xilffs.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = libsrc/xilffs/src/libxilffs.a
+  TARGET_PDB = xilffs.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build libsrc/xilffs/src/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/xilffs/src && /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/bin/ccmake -S/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp -B/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build libsrc/xilffs/src/edit_cache: phony libsrc/xilffs/src/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build libsrc/xilffs/src/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/xilffs/src && /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/bin/cmake --regenerate-during-build -S/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp -B/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build libsrc/xilffs/src/rebuild_cache: phony libsrc/xilffs/src/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build libsrc/xilffs/src/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build libsrc/xilffs/src/CMakeFiles/install.util: CUSTOM_COMMAND libsrc/xilffs/src/all
+  COMMAND = cd /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/xilffs/src && /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build libsrc/xilffs/src/install: phony libsrc/xilffs/src/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build libsrc/xilffs/src/CMakeFiles/install/local.util: CUSTOM_COMMAND libsrc/xilffs/src/all
+  COMMAND = cd /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/xilffs/src && /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build libsrc/xilffs/src/install/local: phony libsrc/xilffs/src/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build libsrc/xilffs/src/CMakeFiles/install/strip.util: CUSTOM_COMMAND libsrc/xilffs/src/all
+  COMMAND = cd /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/xilffs/src && /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build libsrc/xilffs/src/install/strip: phony libsrc/xilffs/src/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xilffs/src/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build libsrc/xilffs/src/include/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/xilffs/src/include && /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/bin/ccmake -S/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp -B/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build libsrc/xilffs/src/include/edit_cache: phony libsrc/xilffs/src/include/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build libsrc/xilffs/src/include/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/xilffs/src/include && /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/bin/cmake --regenerate-during-build -S/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp -B/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build libsrc/xilffs/src/include/rebuild_cache: phony libsrc/xilffs/src/include/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build libsrc/xilffs/src/include/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build libsrc/xilffs/src/include/CMakeFiles/install.util: CUSTOM_COMMAND libsrc/xilffs/src/include/all
+  COMMAND = cd /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/xilffs/src/include && /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build libsrc/xilffs/src/include/install: phony libsrc/xilffs/src/include/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build libsrc/xilffs/src/include/CMakeFiles/install/local.util: CUSTOM_COMMAND libsrc/xilffs/src/include/all
+  COMMAND = cd /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/xilffs/src/include && /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build libsrc/xilffs/src/include/install/local: phony libsrc/xilffs/src/include/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build libsrc/xilffs/src/include/CMakeFiles/install/strip.util: CUSTOM_COMMAND libsrc/xilffs/src/include/all
+  COMMAND = cd /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/xilffs/src/include && /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build libsrc/xilffs/src/include/install/strip: phony libsrc/xilffs/src/include/CMakeFiles/install/strip.util
+
+# =============================================================================
 # Target aliases.
 
 build combined: phony libsrc/combined
@@ -3387,6 +3582,8 @@ build libusbps.a: phony libsrc/usbps/src/libusbps.a
 
 build libxadcps.a: phony libsrc/xadcps/src/libxadcps.a
 
+build libxilffs.a: phony libsrc/xilffs/src/libxilffs.a
+
 build libxilstandalone.a: phony libsrc/standalone/src/libxilstandalone.a
 
 build libxiltimer.a: phony libsrc/xiltimer/src/libxiltimer.a
@@ -3407,6 +3604,8 @@ build usbps: phony libsrc/usbps/src/libusbps.a
 
 build xadcps: phony libsrc/xadcps/src/libxadcps.a
 
+build xilffs: phony libsrc/xilffs/src/libxilffs.a
+
 build xilstandalone: phony libsrc/standalone/src/libxilstandalone.a
 
 build xiltimer: phony libsrc/xiltimer/src/libxiltimer.a
@@ -3419,7 +3618,7 @@ build xiltimer: phony libsrc/xiltimer/src/libxiltimer.a
 #############################################
 # Folder: /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp
 
-build all: phony print_compiler libsrc/all libsrc/standalone/src/all libsrc/xiltimer/src/all
+build all: phony print_compiler libsrc/all libsrc/standalone/src/all libsrc/xiltimer/src/all libsrc/xilffs/src/all
 
 # =============================================================================
 
@@ -3592,6 +3791,20 @@ build libsrc/xadcps/src/all: phony libsrc/xadcps/src/libxadcps.a
 # =============================================================================
 
 #############################################
+# Folder: /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/xilffs/src
+
+build libsrc/xilffs/src/all: phony libsrc/xilffs/src/libxilffs.a libsrc/xilffs/src/include/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/xilffs/src/include
+
+build libsrc/xilffs/src/include/all: phony
+
+# =============================================================================
+
+#############################################
 # Folder: /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/xiltimer/src
 
 build libsrc/xiltimer/src/all: phony libsrc/xiltimer/src/libxiltimer.a libsrc/xiltimer/src/core/all
@@ -3617,14 +3830,14 @@ build libsrc/xiltimer/src/core/default_timer/all: phony
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeASMInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeCInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/GNU-ASM.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/GNU-C.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/GNU.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Platform/Generic.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/Findcommon.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/Findcommonmeta.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/cortexa9_toolchain.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/DRVLISTConfig.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/common/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/coresightps_dcc/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/devcfg/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/dmaps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/emacps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/gpio/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/gpiops/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/qspips/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/scugic/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/scugic/src/SCUGICConfig.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/scutimer/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/scuwdt/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/sdps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/MemConfig.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/common/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/common/gcc/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/cortexa9/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/cortexa9/gcc/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/bspconfig.h.in /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/common/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/common/StandaloneExample.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/common/intr/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/xilstandalone.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/uartps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/usbps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xadcps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/XiltimerExample.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/core/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/core/default_timer/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/xiltimer.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/xtimer_config.h.in CMakeCache.txt CMakeFiles/3.24.2/CMakeASMCompiler.cmake CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeASMInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeCInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/GNU-ASM.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/GNU-C.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/GNU.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Platform/Generic.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/Findcommon.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/Findcommonmeta.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/cortexa9_toolchain.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/DRVLISTConfig.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/common/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/coresightps_dcc/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/devcfg/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/dmaps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/emacps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/gpio/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/gpiops/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/qspips/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/scugic/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/scugic/src/SCUGICConfig.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/scutimer/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/scuwdt/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/sdps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/MemConfig.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/common/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/common/gcc/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/cortexa9/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/cortexa9/gcc/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/bspconfig.h.in /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/common/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/common/StandaloneExample.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/common/intr/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/xilstandalone.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/uartps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/usbps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xadcps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xilffs/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xilffs/src/include/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xilffs/src/xilffs.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xilffs/src/xilffs_config.h.in /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/XiltimerExample.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/core/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/core/default_timer/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/xiltimer.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/xtimer_config.h.in CMakeCache.txt CMakeFiles/3.24.2/CMakeASMCompiler.cmake CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeASMInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeCInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/GNU-ASM.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/GNU-C.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/GNU.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Platform/Generic.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/Findcommon.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/Findcommonmeta.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/cortexa9_toolchain.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/DRVLISTConfig.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/common/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/coresightps_dcc/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/devcfg/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/dmaps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/emacps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/gpio/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/gpiops/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/qspips/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/scugic/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/scugic/src/SCUGICConfig.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/scutimer/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/scuwdt/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/sdps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/MemConfig.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/common/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/common/gcc/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/cortexa9/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/cortexa9/gcc/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/bspconfig.h.in /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/common/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/common/StandaloneExample.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/common/intr/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/xilstandalone.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/uartps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/usbps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xadcps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/XiltimerExample.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/core/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/core/default_timer/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/xiltimer.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/xtimer_config.h.in CMakeCache.txt CMakeFiles/3.24.2/CMakeASMCompiler.cmake CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake: phony
+build /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeASMInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeCInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/GNU-ASM.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/GNU-C.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Compiler/GNU.cmake /home/chris/opt/Xilinx/2025.2/tps/lnx64/cmake-3.24.2/share/cmake-3.24/Modules/Platform/Generic.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/Findcommon.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/Findcommonmeta.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/cortexa9_toolchain.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/DRVLISTConfig.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/common/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/coresightps_dcc/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/devcfg/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/dmaps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/emacps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/gpio/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/gpiops/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/qspips/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/scugic/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/scugic/src/SCUGICConfig.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/scutimer/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/scuwdt/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/sdps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/MemConfig.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/common/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/common/gcc/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/cortexa9/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/arm/cortexa9/gcc/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/bspconfig.h.in /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/common/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/common/StandaloneExample.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/common/intr/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/xilstandalone.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/uartps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/usbps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xadcps/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xilffs/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xilffs/src/include/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xilffs/src/xilffs.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xilffs/src/xilffs_config.h.in /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/XiltimerExample.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/core/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/core/default_timer/CMakeLists.txt /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/xiltimer.cmake /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/xiltimer/src/xtimer_config.h.in CMakeCache.txt CMakeFiles/3.24.2/CMakeASMCompiler.cmake CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake: phony
 
 
 #############################################
