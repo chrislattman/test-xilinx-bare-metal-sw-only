@@ -148,6 +148,7 @@ static int read_write_qspi()
     }
 
     // Erase part of flash
+    // This erases one full sector (0x10000 bytes) starting at TEST_ADDRESS
     status = XQspiPs_PolledTransfer(&qspi_ps_instance, write_enable_cmd, NULL, sizeof(write_enable_cmd));
     if (status != XST_SUCCESS) {
         return XST_FAILURE;
@@ -349,10 +350,11 @@ int main()
     // Xil_DCacheFlushRange(XPAR_PS7_DDR_0_BASEADDRESS + 4, 4);
 
     // QSPI read/write:
-    status = read_write_qspi();
-    if (status != XST_SUCCESS) {
-        return XST_FAILURE;
-    }
+    // Note: writing too often to QSPI flash is not a good idea
+    // status = read_write_qspi();
+    // if (status != XST_SUCCESS) {
+    //     return XST_FAILURE;
+    // }
 
     // SD flash read/write (requires a microSD card to be inserted):
     status = read_write_sd();
