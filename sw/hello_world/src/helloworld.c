@@ -22,6 +22,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <xgpio.h>
 #include <xil_cache.h>
@@ -183,7 +184,7 @@ static int read_write_qspi()
     write_buffer[3] = (uint8_t)(TEST_ADDRESS & 0xFF);
     for (size_t i = 4; i < sizeof(write_buffer); i++) {
         // Fill write buffer with data
-        write_buffer[i] = (uint8_t)i;
+        write_buffer[i] = (uint8_t)rand();
     }
     status = XQspiPs_PolledTransfer(&qspi_ps_instance, write_buffer, NULL, OVERHEAD_SIZE + PAGE_SIZE);
     if (status != XST_SUCCESS) {
