@@ -1,4 +1,4 @@
-connect
+connect # connect -host 173.673.3.2 -port 3121 if remote debugging to hw_server at 173.673.3.2:3121
 bpremove -all
 targets 1
 rst

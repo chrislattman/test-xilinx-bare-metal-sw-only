@@ -16,12 +16,14 @@ To deploy the project using JTAG without the Vitis IDE:
 
 - Run `vitis -s build.py --release`
 - Run `hw_server -s tcp:127.0.0.1:3121` in one shell
+    - `hw_server -s tcp::3121` to enable remote running
 - Run `vitis -s run.py` in another shell
 
 To debug the project from the command line (using TCL script for demonstration, but Python works):
 
 - Run `vitis -s build.py`
 - Run `hw_server -s tcp:127.0.0.1:3121` in one shell
+    - `hw_server -s tcp::3121` to enable remote debugging
 - Run `xsdb` in another shell, then in the xsdb shell, run `source debug.tcl`
     - Commands are available [here](https://docs.amd.com/r/en-US/ug1725-xsdb-reference-guide/XSDB-Commands)
 

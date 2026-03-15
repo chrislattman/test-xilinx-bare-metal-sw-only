@@ -2,7 +2,7 @@ import time
 import xsdb
 
 session = xsdb.start_debug_session()
-session.connect()
+session.connect() # session.connect(host="173.673.3.2", port=3121) if remote running to hw_server at 173.673.3.2:3121
 session.bpremove()
 session.targets(id=1)
 session.rst()
