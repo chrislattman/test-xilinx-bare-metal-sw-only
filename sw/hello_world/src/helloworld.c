@@ -297,6 +297,8 @@ int main()
     if (status != XST_SUCCESS) {
         return XST_FAILURE;
     }
+
+    // Abstracts away setup of the SCU GIC
     status = XSetupInterruptSystem(&gpio_instance1, &button_isr, gpio_config_ptr->IntrId, gpio_config_ptr->IntrParent, XINTERRUPT_DEFAULT_PRIORITY);
     if (status != XST_SUCCESS) {
         return XST_FAILURE;
