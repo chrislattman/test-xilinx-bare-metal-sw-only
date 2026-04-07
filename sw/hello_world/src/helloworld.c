@@ -379,6 +379,7 @@ int main()
     XScuTimer_EnableAutoReload(&timer);
     XScuTimer_Start(&timer);
 
+    // The printf calls below are handled by the built-in FT2232HQ USB-UART chip on the Arty Z7
     init_platform();
     while (1) {
         // The Zynq-7000 offers a watchdog timer, example here:
