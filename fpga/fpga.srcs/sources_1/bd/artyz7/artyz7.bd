@@ -582,7 +582,7 @@
             "value": "0"
           },
           "PCW_EN_EMIO_WDT": {
-            "value": "0"
+            "value": "1"
           },
           "PCW_EN_EMIO_WP_SDIO0": {
             "value": "0"
@@ -672,7 +672,7 @@
             "value": "0"
           },
           "PCW_EN_WDT": {
-            "value": "0"
+            "value": "1"
           },
           "PCW_FCLK0_PERIPHERAL_CLKSRC": {
             "value": "IO PLL"
@@ -1864,6 +1864,12 @@
           },
           "PCW_WDT_PERIPHERAL_DIVISOR0": {
             "value": "1"
+          },
+          "PCW_WDT_PERIPHERAL_ENABLE": {
+            "value": "1"
+          },
+          "PCW_WDT_WDT_IO": {
+            "value": "EMIO"
           }
         },
         "interface_ports": {

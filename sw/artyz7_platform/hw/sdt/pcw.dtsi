@@ -187,6 +187,12 @@
 		xlnx,has-cd = <1>;
 		xlnx,name = "ps7_sd_0";
 	};
+	&watchdog0 {
+		status = "okay";
+		xlnx,ip-name = "ps7_wdt";
+		xlnx,wdt-clk-freq-hz = <108333336>;
+		xlnx,name = "ps7_wdt_0";
+	};
 	&gpio0 {
 		xlnx,mio-gpio-mask = <0x5600>;
 		status = "okay";

@@ -82,6 +82,9 @@ ps7_uart_0:
 ps7_usb_0:
 - ps7_usb
 - usbps
+ps7_wdt_0:
+- ps7_wdt
+- wdtps
 ps7_xadc_0:
 - ps7_xadc
 - xadcps

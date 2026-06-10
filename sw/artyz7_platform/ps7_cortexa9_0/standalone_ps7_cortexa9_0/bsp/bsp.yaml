@@ -287,6 +287,14 @@ drv_info:
       - xusbps_class_audio.c
       - xusbps_class_audio.h
       - xusbps_audiodata.h
+  ps7_wdt_0:
+    driver: wdtps
+    ip_name: ps7_wdt
+    path: /home/chris/opt/Xilinx/2025.2/Vitis/data/embeddedsw/XilinxProcessorIPLib/drivers/wdtps_v3_8
+    examples:
+      xwdtps_intr_example.c: []
+      xwdtps_polled_example.c: []
+      xwdtps_selftest_example.c: []
   ps7_xadc_0:
     driver: xadcps
     ip_name: ps7_xadc

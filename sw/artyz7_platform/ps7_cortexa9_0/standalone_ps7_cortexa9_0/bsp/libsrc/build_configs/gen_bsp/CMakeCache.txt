@@ -238,8 +238,8 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 //Path to a program.
 CMAKE_STRIP:FILEPATH=/home/chris/opt/Xilinx/2025.2/Vitis/gnu/aarch32/lin/gcc-arm-none-eabi/bin/arm-none-eabi-strip
 
-//No help, variable specified on the command line.
-CMAKE_TOOLCHAIN_FILE:UNINITIALIZED=/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/cortexa9_toolchain.cmake
+//The CMake toolchain file
+CMAKE_TOOLCHAIN_FILE:FILEPATH=/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/cortexa9_toolchain.cmake
 
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
@@ -535,6 +535,15 @@ usbps_IS_TOP_LEVEL:STATIC=OFF
 usbps_SOURCE_DIR:STATIC=/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/usbps/src
 
 //Value Computed by CMake
+wdtps_BINARY_DIR:STATIC=/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/wdtps/src
+
+//Value Computed by CMake
+wdtps_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+wdtps_SOURCE_DIR:STATIC=/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/wdtps/src
+
+//Value Computed by CMake
 xadcps_BINARY_DIR:STATIC=/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/gen_bsp/libsrc/xadcps/src
 
 //Value Computed by CMake
@@ -682,7 +691,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=30
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=31
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

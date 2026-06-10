@@ -33,6 +33,8 @@
 #include <xscutimer.h>
 #include <xsdps.h>
 #include <xstatus.h>
+#include <xwdtps.h>
+#include <xwdtps_hw.h>
 
 #include "platform.h"
 
@@ -276,24 +278,26 @@ int main()
 {
     int status;
     XGpio_Config *gpio_config_ptr;
+    XWdtPs_Config *wdtps_config_ptr;
+    XWdtPs wdtps;
     XScuTimer_Config *timer_config_ptr;
-    XScuTimer timer;
+    XScuTimer scutimer;
     uint32_t tick_10s;
 
     // Initialize AXI GPIO for LEDs
     // While this example uses AXI GPIO, one could use PS GPIO instead (XGpioPs_*) and bypass the PL
-    status = XGpio_Initialize(&gpio_instance0, XPAR_AXI_GPIO_0_BASEADDR);
+    status = XGpio_Initialize(&gpio_instance0, XPAR_XGPIO_0_BASEADDR);
     if (status != XST_SUCCESS) {
         return XST_FAILURE;
     }
     XGpio_SetDataDirection(&gpio_instance0, LED_CHANNEL, 0x0);
 
     // Using the SDT approach adopted by Vitis Unified IDE
-    gpio_config_ptr = XGpio_LookupConfig(XPAR_AXI_GPIO_1_BASEADDR);
+    gpio_config_ptr = XGpio_LookupConfig(XPAR_XGPIO_1_BASEADDR);
     if (!gpio_config_ptr) {
         return XST_FAILURE;
     }
-    status = XGpio_Initialize(&gpio_instance1, XPAR_AXI_GPIO_1_BASEADDR);
+    status = XGpio_Initialize(&gpio_instance1, XPAR_XGPIO_1_BASEADDR);
     if (status != XST_SUCCESS) {
         return XST_FAILURE;
     }
@@ -365,28 +369,41 @@ int main()
         return XST_FAILURE;
     }
 
+    // Initialize 4 second system watchdog timer
+    wdtps_config_ptr = XWdtPs_LookupConfig(XPAR_XWDTPS_0_BASEADDR);
+    if (!wdtps_config_ptr) {
+        return XST_FAILURE;
+    }
+    status = XWdtPs_CfgInitialize(&wdtps, wdtps_config_ptr, wdtps_config_ptr->BaseAddress);
+    if (status != XST_SUCCESS) {
+        return XST_FAILURE;
+    }
+    XWdtPs_SetControlValue(&wdtps, XWDTPS_COUNTER_RESET, 0xFFFF);
+    XWdtPs_SetControlValue(&wdtps, XWDTPS_CLK_PRESCALE, XWDTPS_CCR_PSCALE_4096);
+    XWdtPs_Start(&wdtps);
+
     // Initialize 10 second interval periodic timer
-    timer_config_ptr = XScuTimer_LookupConfig(XPAR_SCUTIMER_BASEADDR);
+    timer_config_ptr = XScuTimer_LookupConfig(XPAR_XSCUTIMER_0_BASEADDR);
     if (!timer_config_ptr) {
         return XST_FAILURE;
     }
-    status = XScuTimer_CfgInitialize(&timer, timer_config_ptr, timer_config_ptr->BaseAddr);
+    status = XScuTimer_CfgInitialize(&scutimer, timer_config_ptr, timer_config_ptr->BaseAddr);
     if (status != XST_SUCCESS) {
         return XST_FAILURE;
     }
     tick_10s = (uint32_t)((XPAR_CPU_CORE_CLOCK_FREQ_HZ / 2UL) * 10UL);
-    XScuTimer_LoadTimer(&timer, tick_10s);
-    XScuTimer_EnableAutoReload(&timer);
-    XScuTimer_Start(&timer);
+    XScuTimer_LoadTimer(&scutimer, tick_10s);
+    XScuTimer_EnableAutoReload(&scutimer);
+    XScuTimer_Start(&scutimer);
 
     // The printf calls below are handled by the built-in FT2232HQ USB-UART chip on the Arty Z7
     init_platform();
     while (1) {
         // The Zynq-7000 offers a watchdog timer, example here:
         // https://github.com/Xilinx/embeddedsw/blob/master/XilinxProcessorIPLib/drivers/scuwdt/examples/xscuwdt_polled_example.c
-        if (XScuTimer_IsExpired(&timer)) {
+        if (XScuTimer_IsExpired(&scutimer)) {
             printf("10 second timer went off\r\n");
-            XScuTimer_ClearInterruptStatus(&timer);
+            XScuTimer_ClearInterruptStatus(&scutimer);
         }
         XGpio_DiscreteWrite(&gpio_instance0, LED_CHANNEL, 0x1); // 0x1 is the bitmask for LED0; 0x2, 0x4, 0x8 for other LEDs
         sleep(1);
@@ -394,6 +411,7 @@ int main()
         XGpio_DiscreteWrite(&gpio_instance0, LED_CHANNEL, 0x0); // 0x0 means turn off all LEDs
         sleep(1);
         printf("World!\r\n");
+        XWdtPs_RestartWdt(&wdtps);
     }
     cleanup_platform();
     return 0;

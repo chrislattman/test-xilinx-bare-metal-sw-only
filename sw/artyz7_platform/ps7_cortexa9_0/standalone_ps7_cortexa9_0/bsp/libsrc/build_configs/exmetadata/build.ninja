@@ -115,6 +115,12 @@ build usbps_example: phony CMakeFiles/usbps_example xusbps_exlist.yaml
 
 
 #############################################
+# Utility command for wdtps_example
+
+build wdtps_example: phony CMakeFiles/wdtps_example xwdtps_exlist.yaml
+
+
+#############################################
 # Utility command for xadcps_example
 
 build xadcps_example: phony CMakeFiles/xadcps_example xxadcps_exlist.yaml
@@ -249,6 +255,14 @@ build CMakeFiles/usbps_example xusbps_exlist.yaml | ${cmake_ninja_workdir}CMakeF
 
 
 #############################################
+# Custom command for CMakeFiles/wdtps_example
+
+build CMakeFiles/wdtps_example xwdtps_exlist.yaml | ${cmake_ninja_workdir}CMakeFiles/wdtps_example ${cmake_ninja_workdir}xwdtps_exlist.yaml: CUSTOM_COMMAND
+  COMMAND = cd /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/exmetadata && lopper -f -O /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/wdtps /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/hw_artifacts/ps7_cortexa9_0_baremetal.dts -- bmcmake_metadata_xlnx ps7_cortexa9_0 /home/chris/opt/Xilinx/2025.2/Vitis/data/embeddedsw/XilinxProcessorIPLib/drivers/wdtps_v3_8/examples drvcmake_metadata
+  restat = 1
+
+
+#############################################
 # Custom command for CMakeFiles/xadcps_example
 
 build CMakeFiles/xadcps_example xxadcps_exlist.yaml | ${cmake_ninja_workdir}CMakeFiles/xadcps_example ${cmake_ninja_workdir}xxadcps_exlist.yaml: CUSTOM_COMMAND
@@ -266,7 +280,7 @@ build CMakeFiles/xadcps_example xxadcps_exlist.yaml | ${cmake_ninja_workdir}CMak
 #############################################
 # Folder: /home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/build_configs/exmetadata
 
-build all: phony gpio_example coresightps_dcc_example devcfg_example dmaps_example emacps_example gpiops_example scugic_example qspips_example scutimer_example scuwdt_example sdps_example uartps_example usbps_example xadcps_example
+build all: phony gpio_example coresightps_dcc_example devcfg_example dmaps_example emacps_example gpiops_example scugic_example qspips_example scutimer_example scuwdt_example sdps_example uartps_example usbps_example wdtps_example xadcps_example
 
 # =============================================================================
 # Built-in targets

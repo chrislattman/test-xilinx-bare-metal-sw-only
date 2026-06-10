@@ -243,7 +243,7 @@
         "PCW_EN_EMIO_MODEM_UART1": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "PCW_EN_EMIO_TTC0": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "PCW_EN_EMIO_TTC1": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "PCW_EN_EMIO_WDT": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "PCW_EN_EMIO_WDT": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "PCW_EN_EMIO_TRACE": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "PCW_USE_AXI_NONSECURE": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "PCW_USE_M_AXI_GP0": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -348,7 +348,7 @@
         "PCW_EN_MODEM_UART1": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "PCW_EN_TTC0": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "PCW_EN_TTC1": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "PCW_EN_WDT": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "PCW_EN_WDT": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "PCW_EN_TRACE": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "PCW_EN_USB0": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "PCW_EN_USB1": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -547,8 +547,8 @@
         "PCW_TRACE_GRP_32BIT_ENABLE": [ { "value": "0", "resolve_type": "user", "enabled": false, "usage": "all" } ],
         "PCW_TRACE_GRP_32BIT_IO": [ { "value": "<Select>", "resolve_type": "user", "enabled": false, "usage": "all" } ],
         "PCW_TRACE_INTERNAL_WIDTH": [ { "value": "2", "resolve_type": "user", "usage": "all" } ],
-        "PCW_WDT_PERIPHERAL_ENABLE": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
-        "PCW_WDT_WDT_IO": [ { "value": "<Select>", "resolve_type": "user", "enabled": false, "usage": "all" } ],
+        "PCW_WDT_PERIPHERAL_ENABLE": [ { "value": "1", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
+        "PCW_WDT_WDT_IO": [ { "value": "EMIO", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "PCW_TTC0_PERIPHERAL_ENABLE": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
         "PCW_TTC0_TTC0_IO": [ { "value": "<Select>", "resolve_type": "user", "enabled": false, "usage": "all" } ],
         "PCW_TTC1_PERIPHERAL_ENABLE": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
@@ -971,6 +971,7 @@
     },
     "boundary": {
       "ports": {
+        "WDT_RST_OUT": [ { "direction": "out" } ],
         "USB0_PORT_INDCTL": [ { "direction": "out", "size_left": "1", "size_right": "0" } ],
         "USB0_VBUS_PWRSELECT": [ { "direction": "out" } ],
         "USB0_VBUS_PWRFAULT": [ { "direction": "in", "driver_value": "0" } ],
@@ -1285,5 +1286,5 @@
       }
     }
   },
-  "checksum": "4fabc304"
+  "checksum": "31d664a2"
 }

@@ -1,6 +1,6 @@
-set(CMAKE_HOST_SYSTEM "Linux-6.17.0-14-generic")
+set(CMAKE_HOST_SYSTEM "Linux-6.17.0-29-generic")
 set(CMAKE_HOST_SYSTEM_NAME "Linux")
-set(CMAKE_HOST_SYSTEM_VERSION "6.17.0-14-generic")
+set(CMAKE_HOST_SYSTEM_VERSION "6.17.0-29-generic")
 set(CMAKE_HOST_SYSTEM_PROCESSOR "x86_64")
 
 include("/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/zynq_fsbl/zynq_fsbl_bsp/cortexa9_toolchain.cmake")
