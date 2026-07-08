@@ -399,8 +399,6 @@ int main()
     // The printf calls below are handled by the built-in FT2232HQ USB-UART chip on the Arty Z7
     init_platform();
     while (1) {
-        // The Zynq-7000 offers a watchdog timer, example here:
-        // https://github.com/Xilinx/embeddedsw/blob/master/XilinxProcessorIPLib/drivers/scuwdt/examples/xscuwdt_polled_example.c
         if (XScuTimer_IsExpired(&scutimer)) {
             printf("10 second timer went off\r\n");
             XScuTimer_ClearInterruptStatus(&scutimer);
