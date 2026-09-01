@@ -286,6 +286,7 @@ int main()
 
     // Initialize AXI GPIO for LEDs
     // While this example uses AXI GPIO, one could use PS GPIO instead (XGpioPs_*) and bypass the PL
+    // Would need to use EMIO GPIO
     status = XGpio_Initialize(&gpio_instance0, XPAR_XGPIO_0_BASEADDR);
     if (status != XST_SUCCESS) {
         return XST_FAILURE;
