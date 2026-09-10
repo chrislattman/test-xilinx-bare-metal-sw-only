@@ -2245,11 +2245,16 @@
           "rst_ps7_0_100M/ext_reset_in"
         ]
       },
+      "rst_ps7_0_100M_interconnect_aresetn": {
+        "ports": [
+          "rst_ps7_0_100M/interconnect_aresetn",
+          "axi_smc/aresetn"
+        ]
+      },
       "rst_ps7_0_100M_peripheral_aresetn": {
         "ports": [
           "rst_ps7_0_100M/peripheral_aresetn",
           "axi_gpio_0/s_axi_aresetn",
-          "axi_smc/aresetn",
           "axi_gpio_1/s_axi_aresetn"
         ]
       }
