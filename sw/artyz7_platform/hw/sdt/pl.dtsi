@@ -4,7 +4,7 @@
 		compatible = "simple-bus";
 		#address-cells = <1>;
 		#size-cells = <1>;
-		firmware-name = ".bin";
+		firmware-name = "artyz7_wrapper.bit.bin";
 		clocking0: clocking0 {
 			compatible = "xlnx,fclk";
 			assigned-clocks = <&clkc 15>;

@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
-//Date        : Thu Sep 10 10:30:26 2026
+//Date        : Fri Sep 11 23:04:21 2026
 //Host        : chris-B729 running 64-bit Ubuntu 26.04.1 LTS
 //Command     : generate_target artyz7_wrapper.bd
 //Design      : artyz7_wrapper

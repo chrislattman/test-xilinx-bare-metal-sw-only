@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
-//Date        : Thu Sep 10 10:30:25 2026
+//Date        : Fri Sep 11 23:04:21 2026
 //Host        : chris-B729 running 64-bit Ubuntu 26.04.1 LTS
 //Command     : generate_target artyz7.bd
 //Design      : artyz7
@@ -162,7 +162,6 @@ module artyz7
   wire [3:0]processing_system7_0_M_AXI_GP0_WSTRB;
   wire processing_system7_0_M_AXI_GP0_WVALID;
   wire [5:0]rgb_led_tri_o;
-  wire [0:0]rst_ps7_0_100M_interconnect_aresetn;
   wire [0:0]rst_ps7_0_100M_peripheral_aresetn;
   wire [1:0]sws_2bits_tri_i;
 
@@ -285,7 +284,7 @@ module artyz7
         .S00_AXI_wstrb(processing_system7_0_M_AXI_GP0_WSTRB),
         .S00_AXI_wvalid(processing_system7_0_M_AXI_GP0_WVALID),
         .aclk(processing_system7_0_FCLK_CLK0),
-        .aresetn(rst_ps7_0_100M_interconnect_aresetn));
+        .aresetn(rst_ps7_0_100M_peripheral_aresetn));
   artyz7_processing_system7_0_0 processing_system7_0
        (.DDR_Addr(DDR_addr),
         .DDR_BankAddr(DDR_ba),
@@ -355,7 +354,6 @@ module artyz7
        (.aux_reset_in(1'b1),
         .dcm_locked(1'b1),
         .ext_reset_in(processing_system7_0_FCLK_RESET0_N),
-        .interconnect_aresetn(rst_ps7_0_100M_interconnect_aresetn),
         .mb_debug_sys_rst(1'b0),
         .peripheral_aresetn(rst_ps7_0_100M_peripheral_aresetn),
         .slowest_sync_clk(processing_system7_0_FCLK_CLK0));
