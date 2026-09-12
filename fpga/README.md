@@ -1,4 +1,5 @@
 ## Vivado FPGA Project
 
-To run the Tcl script: `vivado -mode batch -source build.tcl`
+![](bd.png)
 
+To run the Tcl script: `vivado -mode batch -source build.tcl`
