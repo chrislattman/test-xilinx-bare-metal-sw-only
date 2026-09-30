@@ -1,7 +1,10 @@
 # Vitis build outputs & exported platform packages
 /build
 /export
-_ide/
+!_ide/
+_ide/*
+!_ide/settings.json
+!_ide/launch.json
 .rigel_lopper/
 .vitisWorkspace.json
 
