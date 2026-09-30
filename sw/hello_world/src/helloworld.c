@@ -381,6 +381,7 @@ int main()
     }
     XWdtPs_SetControlValue(&wdtps, XWDTPS_COUNTER_RESET, 0xFFFF);
     XWdtPs_SetControlValue(&wdtps, XWDTPS_CLK_PRESCALE, XWDTPS_CCR_PSCALE_4096);
+    XWdtPs_EnableOutput(&wdtps, XWDTPS_RESET_SIGNAL);
     XWdtPs_Start(&wdtps);
 
     // Initialize 10 second interval periodic timer
