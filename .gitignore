@@ -50,6 +50,7 @@ webtalk.jou
 # ------------------------------------------------------------------------------
 # Vitis build outputs and exported platform packages
 build/
+build_configs/
 export/
 !_ide/
 _ide/*
