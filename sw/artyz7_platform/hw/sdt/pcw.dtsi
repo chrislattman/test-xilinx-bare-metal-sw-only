@@ -187,6 +187,18 @@
 		xlnx,has-cd = <1>;
 		xlnx,name = "ps7_sd_0";
 	};
+	&ttc0 {
+		xlnx,ttc-clk2-freq-hz = <108333336>;
+		xlnx,ttc-clk1-clksrc = <0>;
+		status = "okay";
+		xlnx,clock-freq = <108333336>;
+		xlnx,ttc-clk2-clksrc = <0>;
+		xlnx,ip-name = "ps7_ttc";
+		xlnx,ttc-clk0-freq-hz = <108333336>;
+		xlnx,ttc-clk1-freq-hz = <108333336>;
+		xlnx,ttc-clk0-clksrc = <0>;
+		xlnx,name = "ps7_ttc_0";
+	};
 	&watchdog0 {
 		status = "okay";
 		xlnx,ip-name = "ps7_wdt";

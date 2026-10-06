@@ -76,6 +76,15 @@ ps7_sd_0:
 ps7_slcr_0:
 - ps7_slcr
 - None
+ps7_ttc_0:
+- ps7_ttc
+- ttcps
+ps7_ttc_1:
+- ps7_ttc
+- ttcps
+ps7_ttc_2:
+- ps7_ttc
+- ttcps
 ps7_uart_0:
 - ps7_uart
 - uartps

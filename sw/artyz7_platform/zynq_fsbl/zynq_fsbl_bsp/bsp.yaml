@@ -214,6 +214,18 @@ drv_info:
     ip_name: ps7_sdio
     path: /home/chris/opt/Xilinx/2025.2/Vitis/data/embeddedsw/XilinxProcessorIPLib/drivers/sdps_v4_5
   ps7_slcr_0: None
+  ps7_ttc_0:
+    driver: ttcps
+    ip_name: ps7_ttc
+    path: /home/chris/opt/Xilinx/2025.2/Vitis/data/embeddedsw/XilinxProcessorIPLib/drivers/ttcps_v3_22
+  ps7_ttc_1:
+    driver: ttcps
+    ip_name: ps7_ttc
+    path: /home/chris/opt/Xilinx/2025.2/Vitis/data/embeddedsw/XilinxProcessorIPLib/drivers/ttcps_v3_22
+  ps7_ttc_2:
+    driver: ttcps
+    ip_name: ps7_ttc
+    path: /home/chris/opt/Xilinx/2025.2/Vitis/data/embeddedsw/XilinxProcessorIPLib/drivers/ttcps_v3_22
   ps7_uart_0:
     driver: uartps
     ip_name: ps7_uart
@@ -258,9 +270,10 @@ lib_config:
       permission: read_write
       type: string
       value: Default;
-      default: Default;
+      default: Default
       options:
       - Default
+      - ps7_ttc_0
       - ps7_scutimer_0
       description: This parameter is used to select specific timer for sleep functionality
     XILTIMER_tick_timer:
@@ -271,6 +284,7 @@ lib_config:
       default: None
       options:
       - None
+      - ps7_ttc_0
       - ps7_scutimer_0
       description: This parameter is used to select specific timer for tick functionality
   xilffs:

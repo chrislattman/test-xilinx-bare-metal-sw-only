@@ -67,12 +67,12 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="4"/>
-    <Option Name="WTModelSimExportSim" Val="4"/>
-    <Option Name="WTQuestaExportSim" Val="4"/>
+    <Option Name="WTXSimExportSim" Val="5"/>
+    <Option Name="WTModelSimExportSim" Val="5"/>
+    <Option Name="WTQuestaExportSim" Val="5"/>
     <Option Name="WTIesExportSim" Val="0"/>
-    <Option Name="WTVcsExportSim" Val="4"/>
-    <Option Name="WTRivieraExportSim" Val="4"/>
+    <Option Name="WTVcsExportSim" Val="5"/>
+    <Option Name="WTRivieraExportSim" Val="5"/>
     <Option Name="WTActivehdlExportSim" Val="0"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
@@ -102,9 +102,6 @@
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="artyz7.bd" FileRelPathName="ip/artyz7_axi_gpio_1_2/artyz7_axi_gpio_1_2.xci">
           <Proxy FileSetName="artyz7_axi_gpio_1_2"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="artyz7.bd" FileRelPathName="ip/artyz7_axi_smc_0/artyz7_axi_smc_0.xci">
-          <Proxy FileSetName="artyz7_axi_smc_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="artyz7.bd" FileRelPathName="ip/artyz7_processing_system7_0_0/artyz7_processing_system7_0_0.xci">
           <Proxy FileSetName="artyz7_processing_system7_0_0"/>
@@ -205,12 +202,6 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="artyz7_axi_smc_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/artyz7_axi_smc_0" RelGenDir="$PGENDIR/artyz7_axi_smc_0">
-      <Config>
-        <Option Name="TopModule" Val="artyz7_axi_smc_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
   </FileSets>
   <Simulators>
     <Simulator Name="XSim">
@@ -275,16 +266,6 @@
       <RQSFiles/>
     </Run>
     <Run Id="artyz7_axi_gpio_1_2_synth_1" Type="Ft3:Synth" SrcSet="artyz7_axi_gpio_1_2" Part="xc7z020clg400-1" ConstrsSet="artyz7_axi_gpio_1_2" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/artyz7_axi_gpio_1_2_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/artyz7_axi_gpio_1_2_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/artyz7_axi_gpio_1_2_synth_1" ParallelReportGen="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2025"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
-    <Run Id="artyz7_axi_smc_0_synth_1" Type="Ft3:Synth" SrcSet="artyz7_axi_smc_0" Part="xc7z020clg400-1" ConstrsSet="artyz7_axi_smc_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/artyz7_axi_smc_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/artyz7_axi_smc_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/artyz7_axi_smc_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025"/>
         <Step Id="synth_design"/>
@@ -364,23 +345,6 @@
       <RQSFiles/>
     </Run>
     <Run Id="artyz7_axi_gpio_1_2_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="artyz7_axi_gpio_1_2" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="artyz7_axi_gpio_1_2_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/artyz7_axi_gpio_1_2_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/artyz7_axi_gpio_1_2_impl_1" ParallelReportGen="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2025"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
-    <Run Id="artyz7_axi_smc_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="artyz7_axi_smc_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="artyz7_axi_smc_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/artyz7_axi_smc_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/artyz7_axi_smc_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025"/>
         <Step Id="init_design"/>

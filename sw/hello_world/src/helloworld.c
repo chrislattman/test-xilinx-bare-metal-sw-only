@@ -30,7 +30,7 @@
 #include <xinterrupt_wrap.h>
 #include <xparameters.h>
 #include <xqspips.h>
-#include <xscutimer.h>
+#include <xttcps.h>
 #include <xsdps.h>
 #include <xstatus.h>
 #include <xwdtps.h>
@@ -280,9 +280,10 @@ int main()
     XGpio_Config *gpio_config_ptr;
     XWdtPs_Config *wdtps_config_ptr;
     XWdtPs wdtps;
-    XScuTimer_Config *timer_config_ptr;
-    XScuTimer scutimer;
-    uint32_t tick_10s;
+    XTtcPs_Config *timer_config_ptr;
+    XTtcPs ttcps;
+    uint32_t total_ticks, interval_val;
+    uint8_t prescaler_val;
 
     // Initialize AXI GPIO for LEDs
     // While this example uses AXI GPIO, one could use PS GPIO instead (XGpioPs_*) and bypass the PL
@@ -385,25 +386,35 @@ int main()
     XWdtPs_Start(&wdtps);
 
     // Initialize 10 second interval periodic timer
-    timer_config_ptr = XScuTimer_LookupConfig(XPAR_XSCUTIMER_0_BASEADDR);
+    timer_config_ptr = XTtcPs_LookupConfig(XPAR_XTTCPS_0_BASEADDR);
     if (!timer_config_ptr) {
         return XST_FAILURE;
     }
-    status = XScuTimer_CfgInitialize(&scutimer, timer_config_ptr, timer_config_ptr->BaseAddr);
+    status = XTtcPs_CfgInitialize(&ttcps, timer_config_ptr, timer_config_ptr->BaseAddress);
     if (status != XST_SUCCESS) {
         return XST_FAILURE;
     }
-    tick_10s = (uint32_t)((XPAR_CPU_CORE_CLOCK_FREQ_HZ / 2UL) * 10UL);
-    XScuTimer_LoadTimer(&scutimer, tick_10s);
-    XScuTimer_EnableAutoReload(&scutimer);
-    XScuTimer_Start(&scutimer);
+    XTtcPs_SetOptions(&ttcps, XTTCPS_OPTION_INTERVAL_MODE | XTTCPS_OPTION_WAVE_DISABLE);
+    total_ticks = timer_config_ptr->InputClockHz * 10UL;
+    for (prescaler_val = 0; prescaler_val < 16; prescaler_val++) {
+        uint32_t div = 1UL << (prescaler_val + 1);
+        if ((total_ticks / div) <= 0xFFFFUL) {
+            break;
+        }
+    }
+    interval_val = total_ticks / (1UL << (prescaler_val + 1));
+    XTtcPs_SetPrescaler(&ttcps, prescaler_val);
+    XTtcPs_SetInterval(&ttcps, interval_val);
+    XTtcPs_ResetCounterValue(&ttcps);
+    XTtcPs_EnableInterrupts(&ttcps, XTTCPS_IXR_INTERVAL_MASK);
+    XTtcPs_Start(&ttcps);
 
     // The printf calls below are handled by the built-in FT2232HQ USB-UART chip on the Arty Z7
     init_platform();
     while (1) {
-        if (XScuTimer_IsExpired(&scutimer)) {
+        if (XTtcPs_GetInterruptStatus(&ttcps) & XTTCPS_IXR_INTERVAL_MASK) {
             printf("10 second timer went off\r\n");
-            XScuTimer_ClearInterruptStatus(&scutimer);
+            XTtcPs_ClearInterruptStatus(&ttcps, XTTCPS_IXR_INTERVAL_MASK);
         }
         XGpio_DiscreteWrite(&gpio_instance0, LED_CHANNEL, 0x1); // 0x1 is the bitmask for LED0; 0x2, 0x4, 0x8 for other LEDs
         sleep(1);
