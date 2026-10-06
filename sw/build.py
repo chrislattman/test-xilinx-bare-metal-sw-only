@@ -24,4 +24,10 @@ if release_mode:
     app.set_app_config(key="USER_COMPILE_OPTIMIZATION_LEVEL", values="-O2")
 app.build()
 
+app = client.get_component("hello_world_1")
+if release_mode:
+    app.set_app_config(key="USER_COMPILE_DEBUG_LEVEL", values="")
+    app.set_app_config(key="USER_COMPILE_OPTIMIZATION_LEVEL", values="-O2")
+app.build()
+
 vitis.dispose()

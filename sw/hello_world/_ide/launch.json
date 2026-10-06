@@ -50,11 +50,29 @@
 						"stopAtEntry": false,
 						"isSelfRelocatingApp": false,
 						"relativeAddress": ""
+					},
+					{
+						"core": "ps7_cortexa9_1",
+						"resetProcessor": true,
+						"elfFile": "${workspaceFolder}/hello_world_1/build/hello_world_1.elf",
+						"stopAtEntry": false,
+						"isSelfRelocatingApp": false,
+						"relativeAddress": ""
 					}
 				],
 				"crossTriggerBreakpoints": {
 					"isSelected": false,
-					"breakpoints": []
+					"breakpoints": [
+						{
+							"crossTriggerSignalsInput": [
+								0
+							],
+							"crossTriggerSignalsOutput": [
+								8
+							],
+							"selected": true
+						}
+					]
 				}
 			},
 			"internalConsoleOptions": "openOnSessionStart"

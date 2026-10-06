@@ -4,4 +4,5 @@ the_ROM_image:
 	[bootloader]/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/export/artyz7_platform/sw/boot/fsbl.elf
 	/home/chris/test-xilinx-bare-metal-sw-only/sw/hello_world/_ide/bitstream/artyz7_wrapper.bit
 	/home/chris/test-xilinx-bare-metal-sw-only/sw/hello_world/build/hello_world.elf
+	/home/chris/test-xilinx-bare-metal-sw-only/sw/hello_world_1/build/hello_world_1.elf
 }

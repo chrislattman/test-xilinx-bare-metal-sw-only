@@ -34,7 +34,6 @@
 #include <xsdps.h>
 #include <xstatus.h>
 #include <xwdtps.h>
-#include <xwdtps_hw.h>
 
 #include "platform.h"
 
@@ -284,6 +283,13 @@ int main()
     XTtcPs ttcps;
     uint32_t total_ticks, interval_val;
     uint8_t prescaler_val;
+
+    // Zynq 7000-specific code to initialize core A9#1
+    // Could implement in FSBL, but would get lost upon platform regeneration
+    // This has no effect on JTAG debugging
+    Xil_Out32(0xFFFFFFF0, 0x10000000);
+    dmb();
+    __asm__("sev");
 
     // Initialize AXI GPIO for LEDs
     // While this example uses AXI GPIO, one could use PS GPIO instead (XGpioPs_*) and bypass the PL

@@ -31,3 +31,10 @@ dow ./hello_world/build/hello_world.elf
 bpadd main
 con
 configparams force-mem-access 0
+
+targets -set -nocase -filter {name =~ "*A9*#1" && jtag_cable_name =~ "Digilent Arty Z7 003017BB13CFA" && jtag_device_ctx=="jsn-Arty Z7-003017BB13CFA-4ba00477-0"}
+rst -processor
+dow ./hello_world_1/build/hello_world_1.elf
+bpadd main
+con
+configparams force-mem-access 0
