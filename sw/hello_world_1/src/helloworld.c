@@ -16,19 +16,22 @@
  *   uartlite    Configurable only in HW design
  *   ps7_uart    115200 (configured by bootrom/bsp)
  */
-
+ 
+#include <sleep.h>
 #include <stdio.h>
 #include "platform.h"
 #include "xil_printf.h"
-
 
 int main()
 {
     // Not needed since A9#0 calls this already
     // init_platform();
 
-    print("Hello World\n\r");
-    print("Successfully ran Hello World application");
-    cleanup_platform();
+    while (1) {
+        sleep(3);
+        print("Hello from A9#1!\n\r");
+    }
+    
+    // cleanup_platform();
     return 0;
 }
