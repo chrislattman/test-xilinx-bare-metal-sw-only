@@ -1,21 +1,34 @@
-# Ignore build output directory
+# Vitis build outputs & exported platform packages
 /build
+build_configs/
 /export
-
-# Ignore object files and dependent files
-.o
-.d
-
-#Ignore logs folder and log files
-/logs
-.log
-
-#Ignore lock files
-.lock
-
-.bin
-.pdi
+!_ide/
+_ide/*
+!_ide/settings.json
+!_ide/launch.json
+.rigel_lopper/
 .vitisWorkspace.json
 
-_ide/logs
-_ide/.wsdata
+# Compiled binaries and object files
+*.o
+*.obj
+*.a
+*.so
+*.d
+*.elf
+*.elf.size
+*.bin
+*.pdi
+
+# Logs and lock files
+/logs
+*.log
+.lock
+
+# Language server & IDE metadata
+.cache/
+.clangd
+.compile_commands
+compile_commands.json
+.hash-map.txt
+.buildstatus
