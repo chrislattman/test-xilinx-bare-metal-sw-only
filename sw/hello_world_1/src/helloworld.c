@@ -31,7 +31,7 @@ int main()
         sleep(3);
         print("Hello from A9#1!\n\r");
     }
-    
+
     // cleanup_platform();
     return 0;
 }

@@ -7,3 +7,5 @@ The software application was developed in Vitis Unified IDE 2025.2, and it's bui
 
 - The XSA file is generated in Vivado (by generating the block design and then running synthesis and then implementation/place & route)
 - While there is no custom Verilog, the XSA file is still needed as it defines the hardware platform which the software runs on, including enabling the AXI GPIO used to toggle the LED in this example
+
+For more information on GDB debugging multiple standalone applications in a single processing unit, refer to https://docs.amd.com/r/2023.1-English/ug1400-vitis-embedded/Debugging-on-the-Command-Line

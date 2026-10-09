@@ -13,9 +13,12 @@ client.update_workspace(".")
 
 platform = client.get_component("artyz7_platform")
 if release_mode:
-    bsp_domain_name = platform.list_domains()[1]["domain_name"]
-    domain_object = platform.get_domain(bsp_domain_name)
-    domain_object.set_config(option="proc", param="proc_extra_compiler_flags", value="-O2 -Wall -Wextra -fno-tree-loop-distribute-patterns")
+    bsp_domain_name_0 = platform.list_domains()[1]["domain_name"]
+    domain_object_0 = platform.get_domain(bsp_domain_name_0)
+    domain_object_0.set_config(option="proc", param="proc_extra_compiler_flags", value="-O2 -Wall -Wextra -fno-tree-loop-distribute-patterns")
+    bsp_domain_name_1 = platform.list_domains()[2]["domain_name"]
+    domain_object_1 = platform.get_domain(bsp_domain_name_1)
+    domain_object_1.set_config(option="proc", param="proc_extra_compiler_flags", value="-O2 -Wall -Wextra -fno-tree-loop-distribute-patterns -DUSE_AMP=1")
 platform.build()
 
 app = client.get_component("hello_world")

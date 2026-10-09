@@ -26,6 +26,7 @@
 #include <string.h>
 #include <xgpio.h>
 #include <xil_cache.h>
+#include <xil_printf.h>
 #include <xil_types.h>
 #include <xinterrupt_wrap.h>
 #include <xparameters.h>
@@ -286,7 +287,6 @@ int main()
 
     // Zynq 7000-specific code to initialize core A9#1
     // Could implement in FSBL, but would get lost upon platform regeneration
-    // This has no effect on JTAG debugging
     Xil_Out32(0xFFFFFFF0, 0x10000000);
     dmb();
     __asm__("sev");
@@ -329,40 +329,40 @@ int main()
     // Core 0:
 
     // Initialize spinlock to 0 (locked)
-    // *(volatile uint32_t *)(XPAR_PS7_DDR_0_BASEADDRESS + 4) = 0;
-    // Xil_DCacheFlushRange(XPAR_PS7_DDR_0_BASEADDRESS + 4, 4);
+    // *(volatile uint32_t *)(0x0FFFF000 + 4) = 0;
+    // Xil_DCacheFlushRange(0x0FFFF000 + 4, 4);
 
-    // Write to shared memory:
-    volatile uint32_t *shared = (uint32_t *)XPAR_PS7_DDR_0_BASEADDRESS;
+    // Write to shared memory (placed in dedicated region outside code/stack/heap):
+    volatile uint32_t *shared = (uint32_t *)0x0FFFF000;
     *shared = 0xdeadbeef;
-    // Xil_DCacheFlushRange(XPAR_PS7_DDR_0_BASEADDRESS, 4);
+    // Xil_DCacheFlushRange(0x0FFFF000, 4);
 
     // Note: could use:
     // typedef struct {
     //     uint8_t data[512];
     //     volatile uint8_t flag;
     // } shared_t __attribute__((aligned(32))); // 32 byte alignment to avoid false sharing with cache lines
-    // volatile shared_t *shared = (shared_t *)XPAR_PS7_DDR_0_BASEADDRESS;
+    // volatile shared_t *shared = (shared_t *)0x0FFFF000;
 
     // Mark data as written by unlocking spinlock separately:
-    // *(volatile uint32_t *)(XPAR_PS7_DDR_0_BASEADDRESS + 4) = 1;
-    // Xil_DCacheFlushRange(XPAR_PS7_DDR_0_BASEADDRESS + 4, 4);
+    // *(volatile uint32_t *)(0x0FFFF000 + 4) = 1;
+    // Xil_DCacheFlushRange(0x0FFFF000 + 4, 4);
 
     // Core 1:
 
     // Wait for spinlock to be unlocked:
-    // while (*(volatile uint32_t *)(XPAR_PS7_DDR_0_BASEADDRESS + 4) == 0);
+    // while (*(volatile uint32_t *)(0x0FFFF000 + 4) == 0);
 
     // Read from shared memory:
-    // Xil_DCacheInvalidateRange(XPAR_PS7_DDR_0_BASEADDRESS, 4);
+    // Xil_DCacheInvalidateRange(0x0FFFF000, 4);
     uint32_t retrieved_val = *shared;
     if (retrieved_val != 0xdeadbeef) {
         return XST_FAILURE;
     }
 
     // Mark data as read by locking spinlock:
-    // *(volatile uint32_t *)(XPAR_PS7_DDR_0_BASEADDRESS + 4) = 0;
-    // Xil_DCacheFlushRange(XPAR_PS7_DDR_0_BASEADDRESS + 4, 4);
+    // *(volatile uint32_t *)(0x0FFFF000 + 4) = 0;
+    // Xil_DCacheFlushRange(0x0FFFF000 + 4, 4);
 
     // QSPI read/write:
     // Note: writing too often to QSPI flash is not a good idea
@@ -415,19 +415,19 @@ int main()
     XTtcPs_EnableInterrupts(&ttcps, XTTCPS_IXR_INTERVAL_MASK);
     XTtcPs_Start(&ttcps);
 
-    // The printf calls below are handled by the built-in FT2232HQ USB-UART chip on the Arty Z7
+    // The print calls below are handled by the built-in FT2232HQ USB-UART chip on the Arty Z7
     init_platform();
     while (1) {
         if (XTtcPs_GetInterruptStatus(&ttcps) & XTTCPS_IXR_INTERVAL_MASK) {
-            printf("10 second timer went off\r\n");
+            print("10 second timer went off\r\n");
             XTtcPs_ClearInterruptStatus(&ttcps, XTTCPS_IXR_INTERVAL_MASK);
         }
         XGpio_DiscreteWrite(&gpio_instance0, LED_CHANNEL, 0x1); // 0x1 is the bitmask for LED0; 0x2, 0x4, 0x8 for other LEDs
         sleep(1);
-        printf("Hello\r\n");
+        print("Hello\r\n");
         XGpio_DiscreteWrite(&gpio_instance0, LED_CHANNEL, 0x0); // 0x0 means turn off all LEDs
         sleep(1);
-        printf("World!\r\n");
+        print("World!\r\n");
         XWdtPs_RestartWdt(&wdtps);
     }
     cleanup_platform();

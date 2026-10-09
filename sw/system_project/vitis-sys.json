@@ -1,0 +1,30 @@
+{
+  "modelVersion": "1.0",
+  "projectName": "system_project",
+  "platform": "artyz7_platform",
+  "externalComponentRefs": [
+    "hello_world_1",
+    "hello_world"
+  ],
+  "components": [],
+  "buildConfigurations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "supportedTargets": [
+        "HW_EMU",
+        "HW"
+      ]
+    }
+  ],
+  "activeBuildConfigId": "default",
+  "prePackageCommand": "",
+  "postPackageCommand": "",
+  "preLinkerCommand": "",
+  "postLinkerCommand": "",
+  "hostMode": "x86",
+  "isDirty": true,
+  "applicationFlow": "EMBEDDED",
+  "templateFlow": "VITIS",
+  "buildOutputType": "UNKNOWN"
+}

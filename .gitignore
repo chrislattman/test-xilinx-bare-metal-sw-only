@@ -103,6 +103,4 @@ Thumbs.db
 *.swp
 *.swo
 *.tmp
-.vscode/*
-!.vscode/settings.json
 .idea/

@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Core A9#0 Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/sw/hello_world/build/hello_world.elf",
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb-multiarch",
+            "miDebuggerServerAddress": "localhost:3000"
+        }
+    ]
+}
