@@ -278,12 +278,17 @@ int main()
 {
     int status;
     XGpio_Config *gpio_config_ptr;
+
+    // When debugging, comment these out, as well as any sleep() calls on both cores
     XWdtPs_Config *wdtps_config_ptr;
     XWdtPs wdtps;
+
     XTtcPs_Config *timer_config_ptr;
     XTtcPs ttcps;
     uint32_t total_ticks, interval_val;
     uint8_t prescaler_val;
+
+    init_platform();
 
     // Zynq 7000-specific code to initialize core A9#1
     // Could implement in FSBL, but would get lost upon platform regeneration
@@ -416,7 +421,6 @@ int main()
     XTtcPs_Start(&ttcps);
 
     // The print calls below are handled by the built-in FT2232HQ USB-UART chip on the Arty Z7
-    init_platform();
     while (1) {
         if (XTtcPs_GetInterruptStatus(&ttcps) & XTTCPS_IXR_INTERVAL_MASK) {
             print("10 second timer went off\r\n");
@@ -430,6 +434,7 @@ int main()
         print("World!\r\n");
         XWdtPs_RestartWdt(&wdtps);
     }
+
     cleanup_platform();
     return 0;
 }

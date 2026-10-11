@@ -76,7 +76,7 @@ init_platform()
     /* ps7_init();*/
     /* psu_init();*/
     enable_caches();
-    init_uart();
+    // init_uart(); // Not needed since A9#0 calls this already
 }
 
 void

@@ -24,14 +24,13 @@
 
 int main()
 {
-    // Not needed since A9#0 calls this already
-    // init_platform();
+    init_platform();
 
     while (1) {
         sleep(3);
         print("Hello from A9#1!\n\r");
     }
 
-    // cleanup_platform();
+    cleanup_platform();
     return 0;
 }
