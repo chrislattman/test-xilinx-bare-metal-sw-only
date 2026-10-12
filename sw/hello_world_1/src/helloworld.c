@@ -24,11 +24,13 @@
 
 int main()
 {
+    int counter = 0;
     init_platform();
 
     while (1) {
         sleep(3);
         print("Hello from A9#1!\n\r");
+        ++counter;
     }
 
     cleanup_platform();

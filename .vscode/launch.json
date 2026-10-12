@@ -20,6 +20,7 @@
                 { "text": "add-inferior" },
                 { "text": "inferior 2" },
                 { "text": "file ${workspaceRoot}/sw/hello_world_1/build/hello_world_1.elf" },
+                { "text": "source ${workspaceRoot}/.vscode/a9_cores.gdb" },
                 { "text": "attach 2" }
             ],
             "launchCompleteCommand": "None"
