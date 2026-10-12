@@ -9,3 +9,12 @@ The software application was developed in Vitis Unified IDE 2025.2, and it's bui
 - While there is no custom Verilog, the XSA file is still needed as it defines the hardware platform which the software runs on, including enabling the AXI GPIO used to toggle the LED in this example
 
 For more information on GDB debugging multiple standalone applications in a single processing unit, refer to https://docs.amd.com/r/2023.1-English/ug1400-vitis-embedded/Debugging-on-the-Command-Line
+
+For .vscode/launch.json:
+
+- Line 8 is mostly irrelevant when using customLaunchSetupCommands
+- Lines 20-23 can be run in the VSCode Debug Console, where each command is prefixed with "-exec"
+
+For CLion debugging:
+
+- Make sure to run 'core1' in GDB terminal once application is loaded

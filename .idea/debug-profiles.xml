@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Debug Profiles">
+    <debug-profiles>
+      <debug-profile>
+        <option name="id" value="f1938e7a-1547-4834-86d2-77a7a5514e16" />
+        <option name="type" value="generic-gdbserver" />
+        <option name="name" value="GDB Server" />
+        <settings>
+          <device>
+            <option name="consoleEnabled" value="false" />
+            <option name="downloadType" value="Never" />
+            <option name="resetAfterLoad" value="false" />
+          </device>
+          <gdb>
+            <option name="customConnectionScript" value="set schedule-multiple off&#10;file sw/hello_world/build/hello_world.elf&#10;target extended-remote localhost:3000&#10;define core1&#10;  add-inferior&#10;  inferior 2&#10;  file sw/hello_world_1/build/hello_world_1.elf&#10;  attach 2&#10;end" />
+            <option name="executable" value="/usr/bin/gdb-multiarch" />
+            <option name="gdbRemoteString" value="localhost:3000" />
+            <option name="useCustomConnectionScript" value="true" />
+          </gdb>
+          <server>
+            <option name="enabled" value="false" />
+          </server>
+        </settings>
+      </debug-profile>
+    </debug-profiles>
+  </component>
+</project>

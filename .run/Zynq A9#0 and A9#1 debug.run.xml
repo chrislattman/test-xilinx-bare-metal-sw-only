@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Zynq A9#0 and A9#1 debug" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="test-xilinx-bare-metal-sw-only" TARGET_NAME="Vitis" CONFIG_NAME="Vitis" RUN_PATH="$PROJECT_DIR$/sw/hello_world/build/hello_world.elf">
+    <method v="2">
+    </method>
+  </configuration>
+</component>

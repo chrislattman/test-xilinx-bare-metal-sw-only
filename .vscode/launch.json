@@ -5,7 +5,7 @@
             "name": "Core A9#0 + A9#1 Debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceRoot}/sw/hello_world/build/hello_world.elf", // this is mostly irrelevant when using customLaunchSetupCommands
+            "program": "${workspaceRoot}/sw/hello_world/build/hello_world.elf",
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "externalConsole": false,
@@ -17,7 +17,6 @@
                 { "text": "set schedule-multiple off" },
                 { "text": "file ${workspaceRoot}/sw/hello_world/build/hello_world.elf" },
                 { "text": "target extended-remote localhost:3000" },
-                // You can add the following commands in the VSCode Debug Console, where each command is prefixed with "-exec"
                 { "text": "add-inferior" },
                 { "text": "inferior 2" },
                 { "text": "file ${workspaceRoot}/sw/hello_world_1/build/hello_world_1.elf" },
