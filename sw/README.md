@@ -43,3 +43,13 @@ Notes:
 - If you want one A9 to communicate to another (in Linux this would be interprocess communication), the best approach is to use shared (DDR) memory and interprocessor interrupts, also known as software generated interrupts
     - In Linux you would use Unix domain sockets
 - `hw_server` is needed so that `xsdb` and other utilities can connect to one central JTAG daemon
+- When debugging with Vitis, cross-trigger applies to both Run and Debug configurations (keep it off during Runs)
+    - `ps7_cortexa9_0` must come first in `downloadElf` in `system_project/_ide/launch.json`, otherwise halting A9#0 to load its ELF fires the cross-trigger and leaves A9#1 halted
+    - Continuing A9#0 from a breakpoint steps over it first, which briefly halts A9#0 and fires the cross-trigger, so A9#1 halts again and must be continued
+    - Cross-trigger doesn't work as cleanly in VSCode (cppdbg + GDB) as it does in Vitis. With `set schedule-multiple off`, GDB only runs one core at a time, so A9#1 is already halted whenever A9#0 hits a breakpoint and the cross-trigger has nothing to do
+        - A9#1 can be resumed outside GDB (e.g. `targets 3; con` in xsdb) so the cross-trigger halts it, but GDB didn't resume A9#1 itself, so its view of A9#1 may be stale (untested)
+        - The cross-trigger breakpoint (`bpadd -ct-input 0 -ct-output 8` in `vscode_debug.tcl`) only lasts while the xsdb session that set it stays connected
+- A9#1's BSP must be built with `-DUSE_AMP=1`, otherwise its `boot.S` invalidates the SCU and the shared L2 cache when A9#1 starts, wiping A9#0's cached data (e.g. its zeroed `.bss`)
+    - In Vitis 2025.2, the BSP's `proc_extra_compiler_flags` setting is not applied to the BSP build, so `-DUSE_AMP=1` is instead added to `TOOLCHAIN_C_FLAGS`, `TOOLCHAIN_CXX_FLAGS` and `TOOLCHAIN_ASM_FLAGS` in `artyz7_platform/ps7_cortexa9_1/standalone_ps7_cortexa9_1/bsp/cortexa9_toolchain.cmake`
+    - A clean platform rebuild keeps that edit, but recreating the A9#1 domain loses it
+    - After changing it, clean build the platform, then clean build `hello_world_1` (an incremental app build may not relink against the new BSP)

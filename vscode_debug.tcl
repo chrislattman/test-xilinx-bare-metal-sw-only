@@ -25,5 +25,6 @@ dow ./sw/hello_world/build/hello_world.elf
 targets -set -nocase -filter {name =~ "*A9*#1" && jtag_cable_name =~ "Digilent Arty Z7 003017BB13CFA" && jtag_device_ctx=="jsn-Arty Z7-003017BB13CFA-4ba00477-0"}
 rst -processor
 dow ./sw/hello_world_1/build/hello_world_1.elf
+# bpadd -ct-input 0 -ct-output 8 -target-id all
 # mwr 0xFFFFFFF0 0x10000000
 configparams force-mem-access 0
