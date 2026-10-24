@@ -37,6 +37,7 @@
 #include <xwdtps.h>
 
 #include "platform.h"
+#include "shared_mem.h"
 
 /*
  * This is from the AXI GPIO IP axi_gpio_0 in the block design. The first 
@@ -290,8 +291,17 @@ int main()
 
     init_platform();
 
+    // Fault on any access from this core to A9#1's private DDR region
+    // (the debugger and DMA masters bypass the MMU and are not affected)
+    unmap_sections(CORE1_PRIVATE_BASE, CORE1_PRIVATE_END);
+
+    // Initialize the handshake flags before waking A9#1, since DDR holds random values at power-up
+    atomic_store_explicit(&SHARED->ready, 0, memory_order_relaxed);
+    atomic_store_explicit(&SHARED->ack, 0, memory_order_relaxed);
+
     // Zynq 7000-specific code to initialize core A9#1
     // Could implement in FSBL, but would get lost upon platform regeneration
+    // The dmb() below also makes the flag initialization visible to A9#1 before it starts
     Xil_Out32(0xFFFFFFF0, 0x10000000);
     dmb();
     __asm__("sev");
@@ -323,51 +333,18 @@ int main()
     XGpio_InterruptEnable(&gpio_instance1, BTNS_CHANNEL);
     XGpio_InterruptGlobalEnable(&gpio_instance1);
 
-    // TODO: to configure MMU to make the first 1 MB section of DDR memory writable by only this processor, use xil_mmu.h and these resources:
+    // MMU section attributes used by unmap_sections() (see shared_mem.h for the memory map):
     // https://docs.amd.com/r/en-US/oslib_rm/Xil_SetTlbAttributes?tocId=DTOYCPXYHp~TOljwBRJ_BQ
     // https://developer.arm.com/documentation/ddi0406/c/System-Level-Architecture/Virtual-Memory-System-Architecture--VMSA-/Short-descriptor-translation-table-format/Short-descriptor-translation-table-format-descriptors
     // https://developer.arm.com/documentation/ddi0406/c/System-Level-Architecture/Virtual-Memory-System-Architecture--VMSA-/Memory-access-control/Access-permissions
     // https://developer.arm.com/documentation/ddi0406/c/System-Level-Architecture/Virtual-Memory-System-Architecture--VMSA-/Memory-region-attributes/Short-descriptor-format-memory-region-attributes--without-TEX-remap
 
-    // Example: writing to and reading from DDR memory (useful for sharing data between multiple cores)
-    // Note: Cortex A9 L1 cache line size is 32 bytes
-    // Core 0:
-
-    // Initialize spinlock to 0 (locked)
-    // *(volatile uint32_t *)(0x0FFFF000 + 4) = 0;
-    // Xil_DCacheFlushRange(0x0FFFF000 + 4, 4);
-
-    // Write to shared memory (placed in dedicated region outside code/stack/heap):
-    volatile uint32_t *shared = (uint32_t *)0x0FFFF000;
-    *shared = 0xdeadbeef;
-    // Xil_DCacheFlushRange(0x0FFFF000, 4);
-
-    // Note: could use:
-    // typedef struct {
-    //     uint8_t data[512];
-    //     volatile uint8_t flag;
-    // } shared_t __attribute__((aligned(32))); // 32 byte alignment to avoid false sharing with cache lines
-    // volatile shared_t *shared = (shared_t *)0x0FFFF000;
-
-    // Mark data as written by unlocking spinlock separately:
-    // *(volatile uint32_t *)(0x0FFFF000 + 4) = 1;
-    // Xil_DCacheFlushRange(0x0FFFF000 + 4, 4);
-
-    // Core 1:
-
-    // Wait for spinlock to be unlocked:
-    // while (*(volatile uint32_t *)(0x0FFFF000 + 4) == 0);
-
-    // Read from shared memory:
-    // Xil_DCacheInvalidateRange(0x0FFFF000, 4);
-    uint32_t retrieved_val = *shared;
-    if (retrieved_val != 0xdeadbeef) {
-        return XST_FAILURE;
-    }
-
-    // Mark data as read by locking spinlock:
-    // *(volatile uint32_t *)(0x0FFFF000 + 4) = 0;
-    // Xil_DCacheFlushRange(0x0FFFF000 + 4, 4);
+    // Share data with A9#1 through the shared DDR section. The release store orders the data
+    // write before the flag write (emits dmb), pairing with A9#1's acquire load of the flag.
+    // For a lock that both cores can take, use atomic_compare_exchange_* (ldrex/strex) instead.
+    SHARED->data = 0xdeadbeef;
+    atomic_store_explicit(&SHARED->ready, 1, memory_order_release);
+    int ack_printed = 0;
 
     // QSPI read/write:
     // Note: writing too often to QSPI flash is not a good idea
@@ -425,6 +402,10 @@ int main()
         if (XTtcPs_GetInterruptStatus(&ttcps) & XTTCPS_IXR_INTERVAL_MASK) {
             print("10 second timer went off\r\n");
             XTtcPs_ClearInterruptStatus(&ttcps, XTTCPS_IXR_INTERVAL_MASK);
+        }
+        if (!ack_printed && atomic_load_explicit(&SHARED->ack, memory_order_acquire)) {
+            print("A9#1 received shared data\r\n");
+            ack_printed = 1;
         }
         XGpio_DiscreteWrite(&gpio_instance0, LED_CHANNEL, 0x1); // 0x1 is the bitmask for LED0; 0x2, 0x4, 0x8 for other LEDs
         sleep(1);
