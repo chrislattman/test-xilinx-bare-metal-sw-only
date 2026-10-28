@@ -1,7 +1,7 @@
 # connect -host 173.673.3.2 -port 3121 if remote debugging to hw_server at 173.673.3.2:3121
 connect
 bpremove -all
-targets 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Arty Z7 003017BB13CFA" && jtag_device_ctx=="jsn-Arty Z7-003017BB13CFA-4ba00477-0"}
 rst
 after 3000
 
