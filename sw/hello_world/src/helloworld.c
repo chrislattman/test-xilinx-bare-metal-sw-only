@@ -78,7 +78,7 @@ static void button_isr()
 static int read_write_qspi()
 {
     XQspiPs_Config *qspi_ps_config_ptr;
-    XQspiPs qspi_ps_instance;
+    XQspiPs qspi_ps_instance = {0};
     int status;
     uint8_t write_buffer[OVERHEAD_SIZE + PAGE_SIZE];
     uint8_t read_buffer[OVERHEAD_SIZE + PAGE_SIZE];
