@@ -24,6 +24,26 @@
                 { "text": "attach 2" }
             ],
             "launchCompleteCommand": "None"
+        },
+        {
+            "name": "QEMU A9#0 + A9#1 Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/sw/hello_world/build/hello_world.elf",
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb-multiarch",
+            "miDebuggerArgs": "-q",
+            "targetArchitecture": "arm",
+            "customLaunchSetupCommands": [
+                { "text": "file ${workspaceRoot}/sw/hello_world/build/hello_world.elf" },
+                { "text": "add-symbol-file ${workspaceRoot}/sw/hello_world_1/build/hello_world_1.elf" },
+                { "text": "target remote localhost:1234" },
+                { "text": "set scheduler-locking step" }
+            ],
+            "launchCompleteCommand": "None"
         }
     ]
 }

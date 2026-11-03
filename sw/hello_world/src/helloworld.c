@@ -353,11 +353,11 @@ int main()
     //     return XST_FAILURE;
     // }
 
-    // SD flash read/write (requires a microSD card to be inserted):
-    status = read_write_sd();
-    if (status != XST_SUCCESS) {
-        return XST_FAILURE;
-    }
+    // // SD flash read/write (requires a microSD card to be inserted):
+    // status = read_write_sd();
+    // if (status != XST_SUCCESS) {
+    //     return XST_FAILURE;
+    // }
 
     // Initialize 4 second system watchdog timer
     wdtps_config_ptr = XWdtPs_LookupConfig(XPAR_XWDTPS_0_BASEADDR);
