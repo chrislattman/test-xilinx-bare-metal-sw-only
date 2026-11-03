@@ -1,5 +1,7 @@
 import argparse
 import vitis
+from vitis.component import HostComponent
+from vitis.platform_component import Platform
 
 release_mode = False
 parser = argparse.ArgumentParser()
@@ -12,6 +14,8 @@ client = vitis.create_client()
 client.update_workspace(".")
 
 platform = client.get_component("artyz7_platform")
+assert isinstance(platform, Platform)
+# platform.update_hw(hw_design="../fpga/artyz7_wrapper.xsa")  # re-read the XSA if desired
 if release_mode:
     bsp_domain_name_0 = platform.list_domains()[1]["domain_name"]
     domain_object_0 = platform.get_domain(bsp_domain_name_0)
@@ -22,12 +26,14 @@ if release_mode:
 platform.build()
 
 app = client.get_component("hello_world")
+assert isinstance(app, HostComponent)
 if release_mode:
     app.set_app_config(key="USER_COMPILE_DEBUG_LEVEL", values="")
     app.set_app_config(key="USER_COMPILE_OPTIMIZATION_LEVEL", values="-O2")
 app.build()
 
 app = client.get_component("hello_world_1")
+assert isinstance(app, HostComponent)
 if release_mode:
     app.set_app_config(key="USER_COMPILE_DEBUG_LEVEL", values="")
     app.set_app_config(key="USER_COMPILE_OPTIMIZATION_LEVEL", values="-O2")
