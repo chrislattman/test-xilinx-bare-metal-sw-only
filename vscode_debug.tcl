@@ -1,3 +1,13 @@
+# "xsdb vscode_debug.tcl rust" loads the Rust applications (sw/rust_apps_libs,
+# debug build) instead of the C ones; use the "Rust: ..." launch configurations then.
+if {[info exists argv] && [lsearch -exact $argv rust] >= 0} {
+    set elf0 ./sw/target/armv7a-none-eabihf/debug/hello-world-rs
+    set elf1 ./sw/target/armv7a-none-eabihf/debug/hello-world-1-rs
+} else {
+    set elf0 ./sw/hello_world/build/hello_world.elf
+    set elf1 ./sw/hello_world_1/build/hello_world_1.elf
+}
+
 connect
 bpremove -all
 targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Arty Z7 003017BB13CFA" && jtag_device_ctx=="jsn-Arty Z7-003017BB13CFA-4ba00477-0"}
@@ -20,11 +30,15 @@ bpremove $bp_1_46_fsbl_bp
 
 targets -set -nocase -filter {name =~ "*A9*#0" && jtag_cable_name =~ "Digilent Arty Z7 003017BB13CFA" && jtag_device_ctx=="jsn-Arty Z7-003017BB13CFA-4ba00477-0"}
 rst -processor
-dow ./sw/hello_world/build/hello_world.elf
+dow $elf0
 
 targets -set -nocase -filter {name =~ "*A9*#1" && jtag_cable_name =~ "Digilent Arty Z7 003017BB13CFA" && jtag_device_ctx=="jsn-Arty Z7-003017BB13CFA-4ba00477-0"}
 rst -processor
-dow ./sw/hello_world_1/build/hello_world_1.elf
+dow $elf1
+# DDR keeps its contents across resets: clear the handshake words a previous run left
+# in the shared section (ready, ack, msg_head, msg_tail in sw/shared_mem/shared_mem.h),
+# since A9#1 is started directly instead of being released by A9#0 as in a QSPI boot
+mwr 0x0FF00004 0 4
 # bpadd -ct-input 0 -ct-output 8 -target-id all
 # mwr 0xFFFFFFF0 0x10000000
 configparams force-mem-access 0

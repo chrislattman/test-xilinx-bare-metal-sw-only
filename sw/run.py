@@ -42,9 +42,15 @@ session.targets("-sn", filter=f"(name =~ *A9*#1) and {CABLE} and {PS_DAP}")
 session.rst(type="processor")
 session.dow(f"{SW}/hello_world_1/build/hello_world_1.elf")
 
+# DDR keeps its contents across resets, so clear the handshake words a previous run
+# left in the shared section (ready, ack, msg_head, msg_tail in shared_mem/shared_mem.h).
+# In a QSPI boot A9#1 waits in the BootROM until hello_world releases it, after clearing
+# them; here xsdb starts A9#1 directly, and it would act on a stale ready flag (and
+# stale mailbox counters) before A9#0 gets to clear them.
+session.mwr(address=0x0FF00004, words=[0, 0, 0, 0])
+
 # Load both cores before running either: hello_world releases A9#1 to 0x10000000
-# (0xFFFFFFF0 + sev) right away, which must already hold hello_world_1. A9#0 starts
-# first so it clears SHARED->ready before A9#1 can see a stale value from a past run.
+# (0xFFFFFFF0 + sev) right away, which must already hold hello_world_1.
 session.targets("-sn", filter=f"(name =~ *A9*#0) and {CABLE} and {PS_DAP}")
 session.con()
 session.targets("-sn", filter=f"(name =~ *A9*#1) and {CABLE} and {PS_DAP}")

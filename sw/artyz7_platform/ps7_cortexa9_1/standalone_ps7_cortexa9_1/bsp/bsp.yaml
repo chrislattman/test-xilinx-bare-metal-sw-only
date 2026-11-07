@@ -349,7 +349,7 @@ lib_config:
       name: XILTIMER_sleep_timer
       permission: read_write
       type: string
-      value: Default
+      value: ps7_scutimer_0
       default: Default
       options:
       - Default

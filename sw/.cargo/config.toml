@@ -1,0 +1,14 @@
+[build]
+# Cortex-A9, ARM state, hard-float (C side: -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard)
+target = "armv7a-none-eabihf"
+
+[target.armv7a-none-eabihf]
+# Link with GCC so the BSP's Xilinx.spec, libgcc and newlib are picked up the same way
+# Vitis does. Source Vitis settings64.sh first so Xilinx's arm-none-eabi-gcc is on PATH.
+linker = "arm-none-eabi-gcc"
+rustflags = [
+    "-C", "target-cpu=cortex-a9",
+    "-C", "link-arg=-mcpu=cortex-a9",
+    "-C", "link-arg=-mfpu=vfpv3",
+    "-C", "link-arg=-mfloat-abi=hard",
+]

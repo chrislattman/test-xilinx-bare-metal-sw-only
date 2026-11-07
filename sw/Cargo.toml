@@ -1,0 +1,26 @@
+[workspace]
+resolver = "3"
+members = [
+    "rust_platform/xil_a9_0_sys",
+    "rust_platform/xil_a9_1_sys",
+    "rust_apps_libs/shared_mem",
+    "rust_apps_libs/hello_world_rs",
+    "rust_apps_libs/hello_world_1_rs",
+]
+# xil-bsp-build is a host-side build-dependency (it needs std). Excluding it keeps
+# `cargo check --workspace` (what rust-analyzer runs) from building it for the A9
+# target set in .cargo/config.toml; it is still built for the host as a path
+# build-dependency
+exclude = ["rust_platform/xil_bsp_build"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+publish = false
+
+[workspace.dependencies]
+xil-bsp-build = { path = "rust_platform/xil_bsp_build" }
+xil-a9-0-sys = { path = "rust_platform/xil_a9_0_sys" }
+xil-a9-1-sys = { path = "rust_platform/xil_a9_1_sys" }
+shared-mem = { path = "rust_apps_libs/shared_mem" }

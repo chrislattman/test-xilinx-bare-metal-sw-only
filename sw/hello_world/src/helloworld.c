@@ -69,6 +69,15 @@
 
 static XGpio gpio_instance0, gpio_instance1;
 
+// A9#0 owns UART0, so it also prints the messages A9#1 posts to the mailbox
+static void print_core1_messages()
+{
+    char msg[MSG_LEN];
+    while (msg_pop(msg)) {
+        print(msg);
+    }
+}
+
 static void button_isr()
 {
     XGpio_InterruptClear(&gpio_instance1, BTNS_CHANNEL);
@@ -298,6 +307,8 @@ int main()
     // Initialize the handshake flags before waking A9#1, since DDR holds random values at power-up
     atomic_store_explicit(&SHARED->ready, 0, memory_order_relaxed);
     atomic_store_explicit(&SHARED->ack, 0, memory_order_relaxed);
+    atomic_store_explicit(&SHARED->msg_head, 0, memory_order_relaxed);
+    atomic_store_explicit(&SHARED->msg_tail, 0, memory_order_relaxed);
 
     // Zynq 7000-specific code to initialize core A9#1
     // Could implement in FSBL, but would get lost upon platform regeneration
@@ -346,7 +357,7 @@ int main()
     atomic_store_explicit(&SHARED->ready, 1, memory_order_release);
     int ack_printed = 0;
 
-    // QSPI read/write:
+    // // QSPI read/write:
     // Note: writing too often to QSPI flash is not a good idea
     // status = read_write_qspi();
     // if (status != XST_SUCCESS) {
@@ -409,9 +420,11 @@ int main()
         }
         XGpio_DiscreteWrite(&gpio_instance0, LED_CHANNEL, 0x1); // 0x1 is the bitmask for LED0; 0x2, 0x4, 0x8 for other LEDs
         sleep(1);
+        print_core1_messages();
         print("Hello\r\n");
         XGpio_DiscreteWrite(&gpio_instance0, LED_CHANNEL, 0x0); // 0x0 means turn off all LEDs
         sleep(1);
+        print_core1_messages();
         print("World!\r\n");
         XWdtPs_RestartWdt(&wdtps);
     }
