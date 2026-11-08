@@ -23,58 +23,6 @@
           </server>
         </settings>
       </debug-profile>
-      <debug-profile>
-        <option name="id" value="457615a7-33c5-489e-9f2f-1e4da8309ed7" />
-        <option name="type" value="generic-gdbserver" />
-        <option name="name" value="Rust GDB Server" />
-        <settings>
-          <device>
-            <option name="consoleEnabled" value="false" />
-            <option name="downloadType" value="Never" />
-            <option name="resetAfterLoad" value="false" />
-          </device>
-          <gdb>
-            <option name="customConnectionScript" value="python import gdb_load_rust_pretty_printers&#10;set schedule-multiple off&#10;file sw/target/armv7a-none-eabihf/debug/hello-world-rs&#10;target extended-remote localhost:3000&#10;define core1&#10;  add-inferior&#10;  inferior 2&#10;  file sw/target/armv7a-none-eabihf/debug/hello-world-1-rs&#10;  attach 2&#10;end" />
-            <option name="env">
-              <map>
-                <entry key="RUST_GDB" value="gdb-multiarch" />
-              </map>
-            </option>
-            <option name="executable" value="$PROJECT_DIR$/../.cargo/bin/rust-gdb" />
-            <option name="gdbRemoteString" value="localhost:3000" />
-            <option name="useCustomConnectionScript" value="true" />
-          </gdb>
-          <server>
-            <option name="enabled" value="false" />
-          </server>
-        </settings>
-      </debug-profile>
-      <debug-profile>
-        <option name="id" value="3247260c-314c-4652-aab5-e097b6364dfa" />
-        <option name="type" value="generic-gdbserver" />
-        <option name="name" value="Rust QEMU GDB Server" />
-        <settings>
-          <device>
-            <option name="consoleEnabled" value="false" />
-            <option name="downloadType" value="Never" />
-            <option name="resetAfterLoad" value="false" />
-          </device>
-          <gdb>
-            <option name="customConnectionScript" value="python import gdb_load_rust_pretty_printers&#10;file sw/target/armv7a-none-eabihf/debug/hello-world-rs&#10;add-symbol-file sw/target/armv7a-none-eabihf/debug/hello-world-1-rs&#10;target remote localhost:1234&#10;set scheduler-locking step" />
-            <option name="env">
-              <map>
-                <entry key="RUST_GDB" value="gdb-multiarch" />
-              </map>
-            </option>
-            <option name="executable" value="$PROJECT_DIR$/../.cargo/bin/rust-gdb" />
-            <option name="gdbRemoteString" value="localhost:1234" />
-            <option name="useCustomConnectionScript" value="true" />
-          </gdb>
-          <server>
-            <option name="enabled" value="false" />
-          </server>
-        </settings>
-      </debug-profile>
     </debug-profiles>
   </component>
 </project>

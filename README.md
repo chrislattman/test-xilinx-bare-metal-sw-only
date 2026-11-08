@@ -12,8 +12,6 @@ The software application was developed in Vitis Unified IDE 2025.2, and it's bui
 
 The applications can also run in upstream QEMU's `xilinx-zynq-a9` machine (see `Makefile` for details). `make qemu` runs `hello_world` (A9#0) and `hello_world_1` (A9#1) together, and `make qemu_debug` does the same but halts and waits for GDB on `localhost:1234` (use the "QEMU A9#0 + A9#1 Debug" configuration in `.vscode/launch.json`). UART0 output is on `telnet localhost 5678`. The PL (AXI GPIO) and the system watchdog aren't emulated, and timing is approximate.
 
-To run the Rust applications (`sw/rust_apps_libs`) instead, point the `Makefile` at them: `make qemu ELF0=sw/target/armv7a-none-eabihf/debug/hello-world-rs ELF1=sw/target/armv7a-none-eabihf/debug/hello-world-1-rs` (same for `qemu_debug`, then use the "Rust: QEMU A9#0 + A9#1 Debug" configuration).
-
 ## Debugging
 
 For more information on GDB debugging multiple standalone applications in a single processing unit, refer to https://docs.amd.com/r/2023.1-English/ug1400-vitis-embedded/Debugging-on-the-Command-Line

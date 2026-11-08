@@ -6,7 +6,6 @@ from vitis.platform_component import Platform
 release_mode = False
 parser = argparse.ArgumentParser()
 parser.add_argument("--release", action="store_true")
-parser.add_argument("--no-apps", action="store_true", help="only build the platform (BSPs and FSBL)")
 args = parser.parse_args()
 if args.release:
     release_mode = True
@@ -30,13 +29,12 @@ platform.get_domain("standalone_ps7_cortexa9_1").set_config(
     option="lib", param="XILTIMER_sleep_timer", value="ps7_scutimer_0", lib_name="xiltimer")
 platform.build()
 
-if not args.no_apps:
-    for app_name in ["hello_world", "hello_world_1"]:
-        app = client.get_component(app_name)
-        assert isinstance(app, HostComponent)
-        if release_mode:
-            app.set_app_config(key="USER_COMPILE_DEBUG_LEVEL", values="")
-            app.set_app_config(key="USER_COMPILE_OPTIMIZATION_LEVEL", values="-O2")
-        app.build()
+for app_name in ["hello_world", "hello_world_1"]:
+    app = client.get_component(app_name)
+    assert isinstance(app, HostComponent)
+    if release_mode:
+        app.set_app_config(key="USER_COMPILE_DEBUG_LEVEL", values="")
+        app.set_app_config(key="USER_COMPILE_OPTIMIZATION_LEVEL", values="-O2")
+    app.build()
 
 vitis.dispose()

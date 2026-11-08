@@ -1,8 +1,0 @@
-//arch = zynq; split = false; format = BIN
-the_ROM_image:
-{
-	[bootloader]/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/export/artyz7_platform/sw/boot/fsbl.elf
-	/home/chris/test-xilinx-bare-metal-sw-only/sw/artyz7_platform/export/artyz7_platform/hw/artyz7_wrapper.bit
-	/home/chris/test-xilinx-bare-metal-sw-only/sw/target/armv7a-none-eabihf/release/hello-world-rs
-	/home/chris/test-xilinx-bare-metal-sw-only/sw/target/armv7a-none-eabihf/release/hello-world-1-rs
-}

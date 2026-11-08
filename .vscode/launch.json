@@ -44,48 +44,6 @@
                 { "text": "set scheduler-locking step" }
             ],
             "launchCompleteCommand": "None"
-        },
-        {
-            "name": "Rust: Core A9#0 + A9#1 Debug",
-            "type": "gdb",
-            "request": "attach",
-            "target": "extended-remote localhost:3000",
-            "executable": "${workspaceFolder}/sw/target/armv7a-none-eabihf/debug/hello-world-rs",
-            "cwd": "${workspaceFolder}",
-            "gdbpath": "${userHome}/.cargo/bin/rust-gdb",
-            "env": {
-                "RUST_GDB": "gdb-multiarch"
-            },
-            "stopAtConnect": true,
-            "debugger_args": ["-iex", "python import gdb_load_rust_pretty_printers"],
-            "autorun": [
-                "set schedule-multiple off",
-                "add-inferior",
-                "inferior 2",
-                "file ${workspaceFolder}/sw/target/armv7a-none-eabihf/debug/hello-world-1-rs",
-                "python gdb.execute('attach 2')",
-                "source ${workspaceFolder}/.vscode/a9_cores.gdb",
-                "inferior 1"
-            ]
-        },
-        {
-            "name": "Rust: QEMU A9#0 + A9#1 Debug",
-            "type": "gdb",
-            "request": "attach",
-            "remote": true,
-            "target": "localhost:1234",
-            "executable": "${workspaceFolder}/sw/target/armv7a-none-eabihf/debug/hello-world-rs",
-            "cwd": "${workspaceFolder}",
-            "gdbpath": "${userHome}/.cargo/bin/rust-gdb",
-            "env": {
-                "RUST_GDB": "gdb-multiarch"
-            },
-            "stopAtConnect": true,
-            "debugger_args": ["-iex", "python import gdb_load_rust_pretty_printers"],
-            "autorun": [
-                "add-symbol-file ${workspaceFolder}/sw/target/armv7a-none-eabihf/debug/hello-world-1-rs",
-                "set scheduler-locking step"
-            ]
         }
     ]
 }
