@@ -56,6 +56,7 @@ Notes:
         - `build.py` also sets `XILTIMER_tick_timer` to `None` first. On a freshly cleaned BSP, `xiltimer.cmake` otherwise tries to pick a tick timer after the sleep timer, and since `ps7_scutimer_0` is the last timer instance, the BSP configure fails
     - In Linux you would use Unix domain sockets
 - `hw_server` is needed so that `xsdb` and other utilities can connect to one central JTAG daemon
+- Vitis debugs with its TCF Debug Adapter extension (`tcf-debug`, the `"type"` of every config in `_ide/launch.json`), not the Native Debug extension it also bundles. The adapter talks TCF to `hw_server` directly, with no GDB in between, so Continue resumes the selected core. Native Debug is only a GDB/LLDB frontend and isn't used by the Vitis launch configurations
 - When debugging with Vitis, cross-trigger applies to both Run and Debug configurations (keep it off during Runs)
     - `ps7_cortexa9_0` must come first in `downloadElf` in `system_project/_ide/launch.json`, otherwise halting A9#0 to load its ELF fires the cross-trigger and leaves A9#1 halted
     - Continuing A9#0 from a breakpoint steps over it first, which briefly halts A9#0 and fires the cross-trigger, so A9#1 halts again and must be continued

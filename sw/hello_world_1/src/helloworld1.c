@@ -33,8 +33,7 @@ int main()
 
     // Wait for A9#0 to publish, then read the data. The acquire load pairs with A9#0's release store,
     // so the data read below cannot be satisfied before the flag is seen.
-    while (atomic_load_explicit(&SHARED->ready, memory_order_acquire) == 0)
-        ;
+    while (atomic_load_explicit(&SHARED->ready, memory_order_acquire) == 0);
     // A9#0 owns UART0, so messages go through the mailbox for A9#0 to print
     if (SHARED->data == 0xdeadbeef) {
         msg_post("A9#1 read shared data from A9#0\n\r");
