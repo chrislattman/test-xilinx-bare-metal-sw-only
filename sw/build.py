@@ -3,9 +3,16 @@ import vitis
 from vitis.component import HostComponent
 from vitis.platform_component import Platform
 
+APP_NAMES = ["hello_world", "hello_world_1"]
+
 release_mode = False
 parser = argparse.ArgumentParser()
 parser.add_argument("--release", action="store_true")
+clean_group = parser.add_mutually_exclusive_group()
+clean_group.add_argument("--clean", action="store_true",
+                         help="clean the application components only")
+clean_group.add_argument("--distclean", action="store_true",
+                         help="clean the application components and the platform (BSPs)")
 args = parser.parse_args()
 if args.release:
     release_mode = True
@@ -15,6 +22,17 @@ client.update_workspace(".")
 
 platform = client.get_component("artyz7_platform")
 assert isinstance(platform, Platform)
+
+if args.clean or args.distclean:
+    for app_name in APP_NAMES:
+        app = client.get_component(app_name)
+        assert isinstance(app, HostComponent)
+        app.clean()
+    if args.distclean:
+        platform.clean()
+    vitis.dispose()
+    raise SystemExit(0)
+
 # platform.update_hw(hw_design="../fpga/artyz7_wrapper.xsa")  # re-read the XSA if desired
 if release_mode:
     bsp_domain_name_0 = platform.list_domains()[1]["domain_name"]
@@ -23,13 +41,18 @@ if release_mode:
     bsp_domain_name_1 = platform.list_domains()[2]["domain_name"]
     domain_object_1 = platform.get_domain(bsp_domain_name_1)
     domain_object_1.set_config(option="proc", param="proc_extra_compiler_flags", value="-O2 -Wall -Wextra -fno-tree-loop-distribute-patterns -DUSE_AMP=1")
+
 # Cores don't share peripherals: A9#0 keeps the global timer (shared by both cores, and
 # reset by xiltimer's sleep() init), so A9#1's sleep() uses its own SCU private timer
-platform.get_domain("standalone_ps7_cortexa9_1").set_config(
-    option="lib", param="XILTIMER_sleep_timer", value="ps7_scutimer_0", lib_name="xiltimer")
+a9_1_domain = platform.get_domain("standalone_ps7_cortexa9_1")
+# Set tick_timer explicitly first: a freshly cleaned BSP caches it as "None;", which makes
+# xiltimer.cmake auto-pick the timer after the sleep timer -- out of range when that's the
+# last instance (scutimer), so configure fails after --distclean without this.
+a9_1_domain.set_config(option="lib", param="XILTIMER_tick_timer", value="None", lib_name="xiltimer")
+a9_1_domain.set_config(option="lib", param="XILTIMER_sleep_timer", value="ps7_scutimer_0", lib_name="xiltimer")
 platform.build()
 
-for app_name in ["hello_world", "hello_world_1"]:
+for app_name in APP_NAMES:
     app = client.get_component(app_name)
     assert isinstance(app, HostComponent)
     if release_mode:

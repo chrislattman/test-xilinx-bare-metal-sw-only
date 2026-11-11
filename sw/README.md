@@ -27,6 +27,15 @@ To debug the project from the command line (using TCL script for demonstration, 
 - Run `xsdb` in another shell, then in the xsdb shell, run `source debug.tcl`
     - Commands are available [here](https://docs.amd.com/r/en-US/ug1725-xsdb-reference-guide/XSDB-Commands)
 
+To clean the build directories (similar to `cmake --build build --target clean`):
+
+- Run `vitis -s build.py --clean` to clean the application components (`hello_world` and `hello_world_1`)
+    - This deletes the ELFs but keeps each app's CMake configuration
+- Run `vitis -s build.py --distclean` to clean the application components and the platform (the BSPs of both A9 domains and the FSBL)
+    - The next `vitis -s build.py` rebuilds the BSPs from scratch, which takes longer
+    - Some generated BSP headers are tracked in git, so they show up as deleted until the next build regenerates them
+- Both flags only clean and exit without building, so run `vitis -s build.py` (optionally with `--release`) afterwards
+
 When debugging, there is a built-in serial monitor available in Vitis Unified IDE 2025.1 and later. Go to Vitis -> Serial Monitor, select your device's serial port, then select the 115200 baud rate.
 
 If you want to program QSPI flash so that the device starts executing code from a boot image:
@@ -44,6 +53,7 @@ Notes:
 - The cores don't share peripherals, following Xilinx's guidance for AMP (the drivers have no locking, except the GIC's)
     - A9#0 owns UART0. A9#1 never prints: it posts messages to a mailbox in shared DDR (`msg_post()` in `shared_mem/shared_mem.h`), and A9#0 prints them after each `sleep()`, so they can appear up to a second late
     - A9#0 owns the global timer, which both cores share and which `xiltimer`'s `sleep()` resets on first use. A9#1's `sleep()` uses its own SCU private timer instead: `build.py` sets its `XILTIMER_sleep_timer` to `ps7_scutimer_0`
+        - `build.py` also sets `XILTIMER_tick_timer` to `None` first. On a freshly cleaned BSP, `xiltimer.cmake` otherwise tries to pick a tick timer after the sleep timer, and since `ps7_scutimer_0` is the last timer instance, the BSP configure fails
     - In Linux you would use Unix domain sockets
 - `hw_server` is needed so that `xsdb` and other utilities can connect to one central JTAG daemon
 - When debugging with Vitis, cross-trigger applies to both Run and Debug configurations (keep it off during Runs)
@@ -55,4 +65,4 @@ Notes:
 - A9#1's BSP must be built with `-DUSE_AMP=1`, otherwise its `boot.S` invalidates the SCU and the shared L2 cache when A9#1 starts, wiping A9#0's cached data (e.g. its zeroed `.bss`)
     - In Vitis 2025.2, the BSP's `proc_extra_compiler_flags` setting is not applied to the BSP build, so `-DUSE_AMP=1` is instead added to `TOOLCHAIN_C_FLAGS`, `TOOLCHAIN_CXX_FLAGS` and `TOOLCHAIN_ASM_FLAGS` in `artyz7_platform/ps7_cortexa9_1/standalone_ps7_cortexa9_1/bsp/cortexa9_toolchain.cmake`
     - A clean platform rebuild keeps that edit, but recreating the A9#1 domain loses it
-    - After changing it, clean build the platform, then clean build `hello_world_1` (an incremental app build may not relink against the new BSP)
+    - After changing it, run `vitis -s build.py --distclean` and then `vitis -s build.py`, which clean builds the platform and `hello_world_1` (an incremental app build may not relink against the new BSP)
