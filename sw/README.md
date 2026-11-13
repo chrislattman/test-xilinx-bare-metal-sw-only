@@ -41,6 +41,7 @@ When debugging, there is a built-in serial monitor available in Vitis Unified ID
 If you want to program QSPI flash so that the device starts executing code from a boot image:
 
 - Run `bootgen -image system.bif -arch zynq -o BOOT.bin -w` from the `hello_world` folder
+    - For the Rust applications, build them with `cargo build --release` and use `system_rust.bif` instead
 - Run `hw_server -s tcp:127.0.0.1:3121` in one shell
 - In another shell, run `program_flash -f hello_world/BOOT.bin -fsbl artyz7_platform/export/artyz7_platform/sw/boot/fsbl.elf -flash_type qspi-x4-single -blank_check -verify -target_name "jsn-Arty Z7-003017BB13CFA-4ba00477-0"` from the `sw` folder
 - Unplug power from the board, switch from JTAG to QSPI boot mode on the board, then plug power back in
@@ -51,7 +52,7 @@ Notes:
 - If you want to initialize the board with ps7_init.tcl instead of the FSBL, change `isFsbl` to `false` in `hello_world/_ide/launch.json`
 - If you want one A9 to communicate to another (in Linux this would be interprocess communication), the best approach is to use shared (DDR) memory and interprocessor interrupts, also known as software generated interrupts
 - The cores don't share peripherals, following Xilinx's guidance for AMP (the drivers have no locking, except the GIC's)
-    - A9#0 owns UART0. A9#1 never prints: it posts messages to a mailbox in shared DDR (`msg_post()` in `shared_mem/shared_mem.h`), and A9#0 prints them after each `sleep()`, so they can appear up to a second late
+    - A9#0 owns UART0. A9#1 never prints: it posts messages to a mailbox in shared DDR (`msg_post()` in `shared_mem/shared_mem.h`, `Shared::post` in Rust), and A9#0 prints them after each `sleep()`, so they can appear up to a second late
     - A9#0 owns the global timer, which both cores share and which `xiltimer`'s `sleep()` resets on first use. A9#1's `sleep()` uses its own SCU private timer instead: `build.py` sets its `XILTIMER_sleep_timer` to `ps7_scutimer_0`
         - `build.py` also sets `XILTIMER_tick_timer` to `None` first. On a freshly cleaned BSP, `xiltimer.cmake` otherwise tries to pick a tick timer after the sleep timer, and since `ps7_scutimer_0` is the last timer instance, the BSP configure fails
     - In Linux you would use Unix domain sockets
@@ -67,3 +68,37 @@ Notes:
     - In Vitis 2025.2, the BSP's `proc_extra_compiler_flags` setting is not applied to the BSP build, so `-DUSE_AMP=1` is instead added to `TOOLCHAIN_C_FLAGS`, `TOOLCHAIN_CXX_FLAGS` and `TOOLCHAIN_ASM_FLAGS` in `artyz7_platform/ps7_cortexa9_1/standalone_ps7_cortexa9_1/bsp/cortexa9_toolchain.cmake`
     - A clean platform rebuild keeps that edit, but recreating the A9#1 domain loses it
     - After changing it, run `vitis -s build.py --distclean` and then `vitis -s build.py`, which clean builds the platform and `hello_world_1` (an incremental app build may not relink against the new BSP)
+
+## Rust applications
+
+`sw/` is also a Cargo workspace (target `armv7a-none-eabihf`, set in `.cargo/config.toml`) with `no_std` Rust ports of the two applications, built on bindings to the two non-FSBL standalone BSPs:
+
+- `rust_apps_libs/hello_world_rs`: A9#0 application, port of `hello_world/src/helloworld.c`
+- `rust_apps_libs/hello_world_1_rs`: A9#1 application, port of `hello_world_1/src/helloworld1.c`
+- `rust_apps_libs/shared_mem`: Rust version of `shared_mem/shared_mem.h` (memory map and handshake; same layout, so a Rust core can talk to a C core)
+- `rust_platform/xil_a9_0_sys`, `rust_platform/xil_a9_1_sys`: bindgen bindings to `artyz7_platform/ps7_cortexa9_{0,1}/standalone_ps7_cortexa9_{0,1}/bsp`
+- `rust_platform/xil_bsp_build`: host-side `build.rs` helper both sys crates use (bindgen, C shims, link setup)
+
+The C BSPs must be built before running `cargo build`: build the platform (`artyz7_platform`) in Vitis first (`vitis -s build.py` builds it along with the C applications), since the bindings are generated from each BSP's `include/` and link against its `lib/*.a`. Then source the Vitis environment and run `cargo build` (or `cargo build --release`) from `sw/`. The ELFs are `sw/target/armv7a-none-eabihf/<debug|release>/hello-world-rs` and `hello-world-1-rs`.
+
+To debug them, use the `Rust: ...` configurations in `.vscode/launch.json` (Native Debug extension with `rust-gdb`). On the board, run `xsdb vscode_debug.tcl rust` first, which loads the Rust ELFs instead of the C ones. To run or debug them in QEMU, see the root `README.md`.
+
+### Debugging the Rust applications in Vitis
+
+`system_project_rust` is a copy of `system_project` whose launch configuration (`system_project_rust/_ide/launch.json`) downloads the Rust ELFs instead of the C ones. Run `cargo build` from `sw/` first, then launch `system_project_rust_app_hw_1` in Vitis as usual. Debugging works the same as with the C applications (TCF Debug Adapter, per-core run control, cross-trigger option).
+
+- Vitis doesn't build the Rust applications. Building `system_project_rust` only builds the C components it lists (a system project needs Vitis components), so run `cargo build` before every launch or Vitis loads stale ELFs
+- The `elfFile` paths point straight at the Cargo outputs (`${workspaceFolder}/target/armv7a-none-eabihf/debug/hello-world-rs` and `hello-world-1-rs`). The launch accepts them without a `.elf` extension, but the launch editor's "add ELF" dialog doesn't, so edit `launch.json` directly to change them (e.g. to the `release` builds)
+- Line breakpoints, stepping and call stacks work in Rust code, and C-like enums show by name. Values aren't pretty-printed, though: an `AtomicU32` shows as `{v={value={__0=0x9}}}`. Use the `rust-gdb` configurations above when you need readable Rust values
+- The Rust A9#0 application starts a 4 second watchdog, so keep A9#0 halted for less than 4 seconds after that point (or comment out the watchdog, as with the C application)
+- `system_project_rust` was created with the Vitis Python API (`create_sys_project`, then `add_component` for `hello_world_1` and `hello_world`, which requires the Vitis IDE to be closed), and its `_ide/` contents (bitstream, `psinit/ps7_init.tcl`, `hwspec.checksum`) were copied from `system_project`. If the hardware design changes, copy them again
+
+Notes:
+
+- Each app has its own `linker.ld`, a copy of its C counterpart's `lscript.ld`. Keep the copies in sync with the C apps' when you change the memory map (it must also match `rust_apps_libs/shared_mem`)
+- The whole BSP is exposed: `build.rs` generates a wrapper that includes every header in the BSP's `include/` directory, so every driver, `libxil*` function, struct, enum, typedef, global and constant `#define` is available. Regenerating the platform with more drivers picks them up automatically
+    - `SKIP_HEADERS` in `rust_platform/xil_bsp_build/src/lib.rs` lists headers left out because they can't be parsed for this target (`xil_cache_vxworks.h`, `xil_macroback.h`)
+    - bindgen drops constant `#define`s it can't evaluate (e.g. ones with casts or function calls)
+- `static inline` functions (`Xil_In32`, `Xil_Out32`, ...) are wrapped automatically. Function-like macros can't be, so only the ones in `rust_platform/xil_bsp_build/c/xilrs_shim.c` are available (`XTtcPs_Start`, `XTtcPs_SetInterval`, `XWdtPs_RestartWdt`, `dmb`, ...). Add a `xilrs_<Name>` wrapper there when you need another. Both kinds are called from Rust by their C names
+- `XPAR_*` constants are `u32`, but some drivers take `UINTPTR` (`usize`), so cast with `as UINTPTR` where C would convert implicitly
+- The BSP archives, `libgcc` and newlib's `libc` link as one group, which requires linking with (Vitis) `arm-none-eabi-gcc`. Each app's `build.rs` passes its BSP's `Xilinx.spec` and linker script
