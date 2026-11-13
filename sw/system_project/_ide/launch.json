@@ -76,6 +76,82 @@
                 }
             },
             "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "type": "tcf-debug",
+            "request": "launch",
+            "name": "system_project_rs_app_hw_1",
+            "debugType": "baremetal-zynq",
+            "attachToRunningTargetOptions": {
+                "targetSetupMode": "standalone",
+                "executeScript": true,
+                "scriptPath": ""
+            },
+            "autoAttachProcessChildren": false,
+            "target": {
+                "targetConnectionId": "Local",
+                "peersIniPath": "../../_ide/.peers.ini",
+                "context": "zynq"
+            },
+            "pathMap": [],
+            "targetSetup": {
+                "resetSystem": true,
+                "programDevice": true,
+                "partialBitstream": false,
+                "skipRevisionCheck": false,
+                "device": {
+                    "plDevice": "Auto Detect",
+                    "psDevice": "Auto Detect"
+                },
+                "resetAPU": false,
+                "bitstreamFile": "${workspaceFolder}/system_project/_ide/bitstream/artyz7_wrapper.bit",
+                "zynqInitialization": {
+                    "isFsbl": true,
+                    "usingFSBL": {
+                        "initWithFSBL": true,
+                        "fsblFile": "${workspaceFolder}/artyz7_platform/export/artyz7_platform/sw/boot/fsbl.elf",
+                        "fsblExitSymbol": "FsblHandoffJtagExit"
+                    },
+                    "usingPs7Init": {
+                        "runPs7Init": true,
+                        "runPs7PostInit": true,
+                        "ps7InitTclFile": "${workspaceFolder}/system_project/_ide/psinit/ps7_init.tcl"
+                    }
+                },
+                "downloadElf": [
+                    {
+                        "core": "ps7_cortexa9_1",
+                        "resetProcessor": true,
+                        "elfFile": "${workspaceFolder}/target/armv7a-none-eabihf/debug/hello-world-1-rs",
+                        "stopAtEntry": false,
+                        "isSelfRelocatingApp": false,
+                        "relativeAddress": ""
+                    },
+                    {
+                        "core": "ps7_cortexa9_0",
+                        "resetProcessor": true,
+                        "elfFile": "${workspaceFolder}/target/armv7a-none-eabihf/debug/hello-world-rs",
+                        "stopAtEntry": false,
+                        "isSelfRelocatingApp": false,
+                        "relativeAddress": ""
+                    }
+                ],
+                "crossTriggerBreakpoints": {
+                    "isSelected": false,
+                    "breakpoints": [
+                        {
+                            "crossTriggerSignalsInput": [
+                                0
+                            ],
+                            "crossTriggerSignalsOutput": [
+                                8
+                            ],
+                            "selected": true
+                        }
+                    ]
+                }
+            },
+            "internalConsoleOptions": "openOnSessionStart"
         }
     ]
 }

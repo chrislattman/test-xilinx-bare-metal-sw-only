@@ -85,13 +85,12 @@ To debug them, use the `Rust: ...` configurations in `.vscode/launch.json` (Nati
 
 ### Debugging the Rust applications in Vitis
 
-`system_project_rust` is a copy of `system_project` whose launch configuration (`system_project_rust/_ide/launch.json`) downloads the Rust ELFs instead of the C ones. Run `cargo build` from `sw/` first, then launch `system_project_rust_app_hw_1` in Vitis as usual. Debugging works the same as with the C applications (TCF Debug Adapter, per-core run control, cross-trigger option).
+`system_project/_ide/launch.json` has a second configuration, `system_project_rs_app_hw_1`, which is a copy of `system_project_app_hw_1` that downloads the Rust ELFs instead of the C ones. Run `cargo build` from `sw/` first, then launch `system_project_rs_app_hw_1` in Vitis as usual. Debugging works the same as with the C applications (TCF Debug Adapter, per-core run control, cross-trigger option).
 
-- Vitis doesn't build the Rust applications. Building `system_project_rust` only builds the C components it lists (a system project needs Vitis components), so run `cargo build` before every launch or Vitis loads stale ELFs
+- Vitis doesn't build the Rust applications (building `system_project` only builds the C components), so run `cargo build` before every launch or Vitis loads stale ELFs
 - The `elfFile` paths point straight at the Cargo outputs (`${workspaceFolder}/target/armv7a-none-eabihf/debug/hello-world-rs` and `hello-world-1-rs`). The launch accepts them without a `.elf` extension, but the launch editor's "add ELF" dialog doesn't, so edit `launch.json` directly to change them (e.g. to the `release` builds)
 - Line breakpoints, stepping and call stacks work in Rust code, and C-like enums show by name. Values aren't pretty-printed, though: an `AtomicU32` shows as `{v={value={__0=0x9}}}`. Use the `rust-gdb` configurations above when you need readable Rust values
 - The Rust A9#0 application starts a 4 second watchdog, so keep A9#0 halted for less than 4 seconds after that point (or comment out the watchdog, as with the C application)
-- `system_project_rust` was created with the Vitis Python API (`create_sys_project`, then `add_component` for `hello_world_1` and `hello_world`, which requires the Vitis IDE to be closed), and its `_ide/` contents (bitstream, `psinit/ps7_init.tcl`, `hwspec.checksum`) were copied from `system_project`. If the hardware design changes, copy them again
 
 Notes:
 
